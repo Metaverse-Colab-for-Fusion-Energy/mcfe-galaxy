@@ -30,7 +30,7 @@ galaxy:
   # Main config
   admin_users:
    - admin@example.org
-  bootstrap_admin_api_key: 'iamanadminyouknow'
+  bootstrap_admin_api_key: '$GALAXY_API_KEY'
   id_secret: 'morestufftoreplace'
   log_level: WARNING
 
@@ -40,7 +40,6 @@ galaxy:
   watch_core_config: 'true'
 
   # Data connections
-  amqp_internal_connection: 'amqp://rabbitmq:rabbitmq@rabbitmq:5672//'
   database_connection: postgresql://galaxy:galaxy@galaxy-postgres/galaxy
 
   # Job configuration
@@ -83,8 +82,8 @@ galaxy:
   object_store_config:
     type: boto3
     auth:
-      access_key: minioadmin
-      secret_key: miniogalaxy
+      access_key: $MINIO_ACCESS_KEY
+      secret_key: $MINIO_SECRET_KEY
     bucket:
       name: galaxy-backend
     connection: 

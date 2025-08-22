@@ -14,7 +14,7 @@
     <destination id="local" runner="local" />  
     <destination id="docker_local" runner="local">
       <param id="docker_enabled">true</param>
-      <param id="docker_volumes">galaxy-store:/galaxy/server</param>
+      <param id="docker_volumes">galaxy-store:/galaxy/server,$REPO_PATH/galaxy/tools:/galaxy/server/tools</param>
       <param id="docker_sudo">false</param>
       <param id="docker_auto_rm">true</param> 
     </destination>

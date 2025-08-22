@@ -7,7 +7,7 @@
   anon: false
   endpoint_url: "http://minio:9000"
   bucket: galaxy
-  key: minioadmin
-  secret: miniogalaxy
+  key: $MINIO_ACCESS_KEY
+  secret: $MINOI_SECRET_KEY
 
 
