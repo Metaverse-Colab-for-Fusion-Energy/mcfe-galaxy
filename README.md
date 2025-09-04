@@ -1,31 +1,30 @@
-# Galaxy Show and Tell
+# MCFE Galaxy
 
-This repository serves as an example for RSEs to self host Galaxy. The repository contains a `docker-compose.yml` file that can be used to start a Galaxy instance with a few tools pre-installed.
+## Triggering events
 
-Some guides are given below to help you get started!
+Randall includes services which listen for events on a MQTT broker. 
+These events cause further events to be triggered which may include:
+- updating the metadata in Fuseki
+- running workflows on Galaxy
 
-If you are interested in some context for this repo some slides [are available](https://uomresearchit.github.io/Galaxy-Show-And-Tell/).
+To see an example of this in action you can run the following command:
 
-## Tutorials
+```bash
+mosquitto_pub -u {{YOUR_USER}} -P {{YOUR_PASS}} -t '/parameter/update/01234' -m '{"MajorRadius": "8.5"}
+```
 
-[Tutorial: From bootstrap to workflows! Getting started with Galaxy](docs/getting-started.md)
+If you want to see the logs of the Crater service, you can do so by running:
 
-## How to guides
+```bash
+mosquitto_sub -u {{YOUR_USER}} -P {{YOUR_PASS}} -t '/#' -v
+```
 
-[How to: Add tools to your Galaxy](docs/add-tools.md)
+## Useful web interfaces
 
-[How to: Add public workflows your Galaxy](docs/add-workflows.md)
-
-## Useful resources 
-
-The best introductions to Galaxy are given by the Galaxy project itself. You may choose to start your Galaxy journey by reading the following:
-[Introduction to Galaxy Analyses](https://training.galaxyproject.org/training-material/topics/introduction/)
-
-If you are an RSE looking to develop tooling for Galaxy then generic documentation can be found at: [Developing Galaxy Tools](https://training.galaxyproject.org/training-material/topics/dev/#st-tooldev)
-
-You could also explore the Galaxy training material for coaching Galaxy administrators, however, this is not necessary to get started and the techniques may not necessarily apply to a self-hosted instance (the Galaxy Training Network assume deployment through Ansible, we use Docker Compose).
-https://training.galaxyproject.org/training-material/topics/admin/
-
-## Technical reference
-
-The `.env` file is self documented via the `env.template` file. 
+Randall is made of serveral tools which provide web interfaces. These include:
+- Fuseki: http://fuseki.localhost (default username: `admin`, default password: `admin`)
+  * This is a triplestore which stores the metadata
+- Galaxy: http://galaxy.localhost (username and password from .env file)
+  * This is a workflow manager which runs workflows
+- Traefik: http://localhost:8888 (no authentication)
+  * This is a reverse proxy which routes traffic to the appropriate service
