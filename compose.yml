@@ -92,6 +92,7 @@ services:
         COPY ./galaxy/init/template.sh /template.sh
     container_name: ${PROJECT_NAME}-galaxy-template-eval
     env_file: .env
+    working_dir: ./
     volumes:
       - ./galaxy/config/:/work
       - galaxy-store:/galaxy/server/
@@ -147,7 +148,6 @@ services:
       minio:
         condition: service_healthy
     volumes:
-      - ./minio/init/bootstrap.sh:/bootstrap.sh
       - ./minio/data:/data:ro      
     networks:
       - galaxy
