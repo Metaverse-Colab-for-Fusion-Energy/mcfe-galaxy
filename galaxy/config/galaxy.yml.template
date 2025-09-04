@@ -118,7 +118,7 @@ galaxy:
   shed_data_manager_config_file: /galaxy/server/config/shed_data_manager_conf.xml
   shed_tool_config_file: /galaxy/server/config/shed_tool_conf.xml
   shed_tool_data_table_config: /galaxy/server/config/shed_tool_data_table_conf.xml
-  tool_config_file: /galaxy/server/config/tool_conf.xml.sample
+  tool_config_file: /galaxy/server/config/tool_conf.xml
   job_config_file: /galaxy/server/config/job_conf.xml
   tool_data_path: /galaxy/server/database/tool_data
   tool_data_table_config_path: /galaxy/server/config/tool_data_table_conf.xml.sample
