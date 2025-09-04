@@ -1,0 +1,112 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "Magnet",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MinorRadius"
+                }
+            ],
+            "label": "MinorRadius",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 1,
+                "top": 0.0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "75adaf3a-0313-412c-88f9-1bdf1a01ed2f",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MagnetThickness"
+                }
+            ],
+            "label": "MagnetThickness",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 115.0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "1b8148fb-7ef5-42f5-9bd3-cda19a8d33a3",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "magnets_emulation",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "mag_thickness": {
+                    "id": 1,
+                    "output_name": "output"
+                },
+                "min_rad": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Magnet Emulation",
+            "outputs": [
+                {
+                    "name": "mag_str",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "left": 278,
+                "top": 21.0
+            },
+            "post_job_actions": {},
+            "tool_id": "magnets_emulation",
+            "tool_state": "{\"mag_thickness\": {\"__class__\": \"ConnectedValue\"}, \"min_rad\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "29f0f2c7-8da0-47d7-b860-c36cfdc304bb",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "MagneticField_float",
+                    "output_name": "mag_str",
+                    "uuid": "834f8003-d2a2-4c64-90cb-fe689fd2c510"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "33eaeb8d-149d-4839-8160-5a6d66547caa",
+    "version": 0
+}

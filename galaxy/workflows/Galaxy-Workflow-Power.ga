@@ -1,0 +1,81 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "Power",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "te"
+                }
+            ],
+            "label": "te",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 0.0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "0e4c7123-8f31-46f9-86ca-19ada9d82961",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "power_emulation",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "te": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Power Emulation",
+            "outputs": [
+                {
+                    "name": "pow",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "left": 255,
+                "top": 10.0
+            },
+            "post_job_actions": {},
+            "tool_id": "power_emulation",
+            "tool_state": "{\"te\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "d7461dcf-c114-4cd1-bd4c-65a8ded0a1db",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "Power_float",
+                    "output_name": "pow",
+                    "uuid": "434e8b25-48bd-4ce1-879e-1a79e025b269"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "92ad4d73-54b6-42ab-8148-62d19e2fc9d2",
+    "version": 0
+}

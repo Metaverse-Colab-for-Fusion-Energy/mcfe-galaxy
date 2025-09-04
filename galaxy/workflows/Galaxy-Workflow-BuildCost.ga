@@ -1,0 +1,143 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "BuildCost",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MajorRadius"
+                }
+            ],
+            "label": "MajorRadius",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 11,
+                "top": 0.0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "d1f4719c-66cf-41df-a620-37a16b8a5395",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MinorRadius"
+                }
+            ],
+            "label": "MinorRadius",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 114.0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "614f0f2e-064b-464d-a135-12796496d5fa",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MagnetThickness"
+                }
+            ],
+            "label": "MagnetThickness",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 9,
+                "top": 229.0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "0b3caea4-292c-4567-840d-0851f445ce10",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "build_cost_emulation",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "mag_thickness": {
+                    "id": 2,
+                    "output_name": "output"
+                },
+                "maj_rad": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "min_rad": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Build Cost",
+            "outputs": [
+                {
+                    "name": "cost",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "left": 333,
+                "top": 47.0
+            },
+            "post_job_actions": {},
+            "tool_id": "build_cost_emulation",
+            "tool_state": "{\"mag_thickness\": {\"__class__\": \"ConnectedValue\"}, \"maj_rad\": {\"__class__\": \"ConnectedValue\"}, \"min_rad\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "4afe3c04-c0df-4bba-b777-6e25db97c4cd",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "BuildCost_float",
+                    "output_name": "cost",
+                    "uuid": "fbfb7609-c587-4e71-855e-642fd7a051da"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "0455bbb0-6c9b-43e1-8c5c-7a2f2d36f374",
+    "version": 0
+}

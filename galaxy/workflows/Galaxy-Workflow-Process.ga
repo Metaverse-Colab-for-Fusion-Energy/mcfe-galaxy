@@ -1,0 +1,205 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "Process",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MajorRadius"
+                }
+            ],
+            "label": "MajorRadius",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 1,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "02274cf6-5fc0-425e-bc4f-294cafdd6af4",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Triangularity"
+                }
+            ],
+            "label": "Triangularity",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 1,
+                "top": 94
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "b8e3c760-4925-44c1-ac29-19183db470d5",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "Elongation"
+                }
+            ],
+            "label": "Elongation",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 172
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "40f89cc3-c3f3-4bc6-854e-7738f9206635",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 3,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MagneticField"
+                }
+            ],
+            "label": "MagneticField",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 6,
+                "top": 251.5
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "a2d7a351-5fc1-4399-acf6-163d92c51452",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 4,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "MinorRadius"
+                }
+            ],
+            "label": "MinorRadius",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 3,
+                "top": 351.5
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "2627c82f-d6d9-4bb6-9a61-19efced7ba34",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "process_plasma",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "b": {
+                    "id": 3,
+                    "output_name": "output"
+                },
+                "elong": {
+                    "id": 2,
+                    "output_name": "output"
+                },
+                "maj_rad": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "min_rad": {
+                    "id": 4,
+                    "output_name": "output"
+                },
+                "triang": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Process Plamsa",
+            "outputs": [
+                {
+                    "name": "te",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "left": 309,
+                "top": 59
+            },
+            "post_job_actions": {},
+            "tool_id": "process_plasma",
+            "tool_state": "{\"b\": {\"__class__\": \"ConnectedValue\"}, \"elong\": {\"__class__\": \"ConnectedValue\"}, \"maj_rad\": {\"__class__\": \"ConnectedValue\"}, \"min_rad\": {\"__class__\": \"ConnectedValue\"}, \"triang\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "e979991a-a615-4b44-84af-a43885fe6536",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "te_float",
+                    "output_name": "te",
+                    "uuid": "f5e45407-857b-4675-853b-5eff6bf76daf"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "f55e64e3-27f1-441c-b48e-c0ea1805490c",
+    "version": 1
+}

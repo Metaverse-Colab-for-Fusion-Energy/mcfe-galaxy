@@ -1,0 +1,81 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "TBR",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "te"
+                }
+            ],
+            "label": "te",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "1ff4eed1-ea74-48f2-b67e-c27b96f6fdfa",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": "tbr_emulator",
+            "errors": null,
+            "id": 1,
+            "input_connections": {
+                "te": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "TBR Emulator",
+            "outputs": [
+                {
+                    "name": "TBR",
+                    "type": "data"
+                }
+            ],
+            "position": {
+                "left": 268,
+                "top": 16
+            },
+            "post_job_actions": {},
+            "tool_id": "tbr_emulator",
+            "tool_state": "{\"te\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "eaf397d6-f1ef-4ec4-b08b-d9c53d93090d",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "TBR_float",
+                    "output_name": "TBR",
+                    "uuid": "443a0413-7b5b-40a9-9d00-3a44ae3408a9"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "2df1f54d-2581-438c-9292-c36bbe68c12e",
+    "version": 1
+}
