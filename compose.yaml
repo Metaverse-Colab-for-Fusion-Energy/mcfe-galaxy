@@ -89,7 +89,7 @@ services:
       context: .
       dockerfile_inline: |
         FROM ubuntu:22.04
-        RUN apt update && apt install gettext
+        RUN apt update && apt install -y gettext
         COPY ./galaxy/init/template.sh /template.sh
     container_name: ${PROJECT_NAME}-galaxy-template-eval
     env_file: .env
