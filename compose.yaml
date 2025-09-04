@@ -29,7 +29,7 @@ services:
         COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
         ENV HOME=/tmp
         ENV UV_CACHE=/tmp/uv_cache
-        RUN uv add boto3
+        RUN uv add boto3 --index-url https://pypi.org/simple
     restart: unless-stopped
     group_add:
       - ${DOCKER_GID}
