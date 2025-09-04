@@ -29,7 +29,7 @@ services:
         COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /uvx /bin/
         ENV HOME=/tmp
         ENV UV_CACHE=/tmp/uv_cache
-        RUM mv pyproject.toml backup.toml
+        RUN mv pyproject.toml backup.toml
         RUN uv add boto3 --index https://pypi.org/simple
     restart: unless-stopped
     group_add:
