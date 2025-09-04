@@ -92,7 +92,8 @@ services:
         COPY ./galaxy/init/template.sh /template.sh
     container_name: ${PROJECT_NAME}-galaxy-template-eval
     env_file: .env
-    working_dir: ./
+    environment:
+      REPO_PATH=${PWD}
     volumes:
       - ./galaxy/config/:/work
       - galaxy-store:/galaxy/server/
