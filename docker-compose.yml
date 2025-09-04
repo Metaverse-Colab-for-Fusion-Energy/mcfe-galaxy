@@ -49,6 +49,7 @@ services:
       - ./galaxy/tusd:/usr/local/sbin/tusd
       # Populate the instance
       - ./galaxy/tools:/galaxy/server/tools/
+      - ./galaxy/lib/mcfe_datatypes.py:/galaxy/server/lib/galaxy/datatypes/mcfe_datatypes.py
       # Add custom configuration files
       - ./galaxy/config/tool_conf.xml:/galaxy/server/config/tool_conf.xml.sample
       - ./galaxy/config/datatypes_conf.xml:/galaxy/server/config/datatypes_conf.xml

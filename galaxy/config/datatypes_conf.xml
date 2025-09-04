@@ -694,6 +694,10 @@
     <datatype extension="oxligl" type="galaxy.datatypes.binary:OxliGraphLabels" mimetype="application/octet-stream" display_in_upload="true"/>
     <!-- Constructive solid geometry datatypes -->
     <datatype extension="stl" type="galaxy.datatypes.constructive_solid_geometry:STL" display_in_upload="true"/>
+    <datatype extension="vtu" type="galaxy.datatypes.mcfe_datatypes:vtu" display_in_upload="true" />
+    <datatype extension="pvtu" type="galaxy.datatypes.mcfe_datatypes:pvtu" display_in_upload="true"/>
+    <datatype extension="vtp" type="galaxy.datatypes.mcfe_datatypes:vtp" display_in_upload="true"/>
+
     <datatype extension="plyascii" type="galaxy.datatypes.constructive_solid_geometry:PlyAscii" display_in_upload="true"/>
     <datatype extension="plybinary" type="galaxy.datatypes.constructive_solid_geometry:PlyBinary" display_in_upload="true"/>
     <datatype extension="vtkascii" type="galaxy.datatypes.constructive_solid_geometry:VtkAscii" display_in_upload="true"/>
