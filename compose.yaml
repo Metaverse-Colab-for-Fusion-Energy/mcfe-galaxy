@@ -93,7 +93,7 @@ services:
     container_name: ${PROJECT_NAME}-galaxy-template-eval
     env_file: .env
     environment:
-      REPO_PATH=${PWD}
+      REPO_PATH: ${PWD}
     volumes:
       - ./galaxy/config/:/work
       - galaxy-store:/galaxy/server/
