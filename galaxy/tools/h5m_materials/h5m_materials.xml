@@ -1,0 +1,30 @@
+<tool id="h5m_materials" name="Material Volume Names from h5m CAD" version="0.1.0">
+
+  <description>Extract the volume names from a h5m file for material assignment in an OpenMC simulation</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python '$__tool_directory__/h5m_materials.py' '$h5m_CAD' '$Volume_Names' 2>&1
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="h5m_CAD" label="dagmc.h5m"/>
+  </inputs>
+
+  <outputs>
+    <data format="txt" name="Volume_Names" label="materials"/>
+  </outputs>
+
+  <help>
+    This tool takes in a h5m geometry file and extracts the volume names for materials assignment.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

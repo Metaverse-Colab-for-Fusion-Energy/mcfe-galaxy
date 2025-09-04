@@ -1,0 +1,32 @@
+<tool id="minio_push" name="MinIO Push" version="0.1.0">
+
+    <description>Push file to MinIO via URL</description>
+  
+    <requirements>
+      <container type="docker">williamjsmith15/omniverse-minio:04102023</container>
+    </requirements>
+  
+    <command>
+      <![CDATA[
+        ln -fs '$File' '$File.element_identifier' &&
+        python '$__tool_directory__/push.py' '$File.element_identifier' '$Push_Bucket'
+      ]]>
+    </command>
+  
+    <inputs>
+      <param type="data" name="File" label="File" help="File to upload. Format: Any file"/>
+      <param type="text" name="Push_Bucket" label="Push_Bucket" help="Bucket to Upload Info to. Format: String"/>
+    </inputs>
+  
+    <outputs>
+
+    </outputs>
+  
+    <help>
+      This tool pushes a file to a MinIO server in a given bucket.
+    </help>
+  
+    <citations>
+  
+    </citations>
+  </tool>

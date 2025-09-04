@@ -1,0 +1,28 @@
+<tool id="moose" name="MOOSE" version="0.1.0">
+
+    <description>MOOSE Thermal Heating Simulations</description>
+
+    <requirements>
+      <container type="docker">nttaudom/moose-heating:08.10.24</container>
+    </requirements>
+
+    <command>
+      <![CDATA[
+      cp '$moose_input' 'input.i' &&
+      cp '$mesh_file' 'mesh.msh' &&
+      sed -i 's|file = .*|file = "mesh.msh"|' input.i &&
+      ocelot-opt -i 'input.i' &&
+      cp 'input_out.e' '$moose_output'
+      ]]>
+    </command>
+
+    <inputs>
+      <param type="data" name="moose_input" label="MOOSE Input File" help="Simulation input parameters. Format: .i"/>
+      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .msh"/>
+    </inputs>
+
+    <outputs>
+      <data format="data" name="moose_output" label="MOOSE Output" help="Simulation output result. Format: .e"/>
+    </outputs>
+
+  </tool>

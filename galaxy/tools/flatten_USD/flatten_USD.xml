@@ -1,0 +1,30 @@
+<tool id="flatten_USD" name="Flatten USD" version="0.1.0">
+  <description>Flatten USD Scene for Conversion Steps</description>
+
+  <requirements>
+    <container type="docker">ghcr.io/uomresearchit/usdutils:06072023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      cp '$USD_in' in.usd &&
+      usdcat -o flat.usd --flatten in.usd 2>&1 &&
+      mv flat.usd '$USD_flat'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="USD_in" label="in.usd"/>
+  </inputs>
+
+  <outputs>
+    <data format="usd" name="USD_flat" label="flat"/>
+  </outputs>
+
+  <help>
+    This tool takes in a USD file and flattens it for CAD conversion steps.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

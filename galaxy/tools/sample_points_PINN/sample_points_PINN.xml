@@ -1,0 +1,39 @@
+<tool id="sample_points_PINN" name="PINN Sample Point Generator" version="0.1.0">
+
+  <description>Sample Point Generator for the PINN</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-gmsh:05092023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      cp '$CAD_Input' input.stl &&
+      python3 '$__tool_directory__/sample_points_PINN.py' '$Config' '$Points' &&
+      mv mesh.vtk '$Mesh_Output'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="CAD_Input" label="CAD_Input"
+      help="CAD Input for Sample Point Generation (From Paramak Generator). Format: STL" />
+    <param type="data" name="Config" label="Config"
+      help="Config file for the PINN workflow settings. Format: JSON" />
+  </inputs>
+
+  <outputs>
+    <data format="vtk" name="Mesh_Output" label="Mesh_Output"
+      help="Mesh Output for use in visualisation of PINN results. Format: vtk" />
+    <data format="txt" name="Points" label="Points"
+      help="List of points for the PINN to sample from. Format: txt" />
+  </outputs>
+
+  <help>
+    This tool takes in the CAD model and generates a list of points to sample in the volume for the
+    Modulus PINN code to utilise, and generates a mesh file for visualisation of results.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

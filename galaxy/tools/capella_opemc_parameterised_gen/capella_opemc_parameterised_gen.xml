@@ -1,0 +1,34 @@
+<tool id="capella_opemc_parameterised_gen" name="Capella OpenMC Input Generator" version="0.1.1">
+
+    <description>Generates input files for the Capella OpenMC Workflow</description>
+
+    <requirements>
+        <container type="docker">python:3.11</container>
+    </requirements>
+
+    <command>
+        <![CDATA[
+            cp '$__tool_directory__/template_input.json' . &&
+            python3 '$__tool_directory__/capella_opemc_parameterised_gen.py' --maj_rad '$maj_rad' --triang '$triang' --elong '$elong' --ion_temp '$ion_temp' --li6_en '$li6_en' --fw_thick '$fw_thick' &&
+            cp output.json '$output'
+        ]]>
+    </command>
+
+    <inputs>
+        <param type="float" name="maj_rad" value="900" label="Major Radius" help="Major radius of the plasma in cm"/>
+        <param type="float" name="triang" value="0.5" label="Triangularity" help="Triangularity of the plasma"/>
+        <param type="float" name="elong" value="1.84" label="Elongation" help="Elongation of the plasma"/>
+        <param type="float" name="ion_temp" value="45.9" label="Central Ion Temperature" help="Temperature of the ions in keV"/>
+        <param type="float" name="li6_en" value="20" label="Li6 Enrichment" help="Percentage enrichment of Li6 in the blanket"/>
+        <param type="float" name="fw_thick" value="1.8" label="First Wall Thickness" help="Thickness of the first wall in cm"/>
+    </inputs>
+
+    <outputs>
+        <data format="json" name="output" label="Capella JSON" help="JSON configuration for the Capella workflow. Format: JSON"/>
+    </outputs>
+
+    <help>
+        Generates JSON input file from a series of input parameters for the Capella OpenMC Workflow using the deafult JSON configuration file.
+    </help>
+
+</tool>

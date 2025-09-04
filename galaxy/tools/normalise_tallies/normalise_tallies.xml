@@ -1,0 +1,35 @@
+<tool id="normalise_heating" name="OpenMC Convert Heating" version="0.1.0">
+
+  <description>Convert OpenMC 'heating-local' files</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python '$__tool_directory__/normalise_tallies.py' '$Statepoint' '$Config' 2>&1 &&
+      mv output.vtk '$Converted_Tallies'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="Config" label="Config"
+      help="Configuration file so the converter knows details of the mesh. Format: JSON" />
+    <param type="data" name="Statepoint" label="Statepoint"
+      help="State file with information of the neutronics simualtion. Format: h5" />
+  </inputs>
+
+  <outputs>
+    <data format="vtk" name="Converted_Tallies" label="Converted_Tallies"
+      help="Output converted heating values on the mesh. Format: vtk" />
+  </outputs>
+
+  <help>
+    This tool takes an OpenMC statepoint and calibrates it according to a config file, then outputs
+    in vtk format.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

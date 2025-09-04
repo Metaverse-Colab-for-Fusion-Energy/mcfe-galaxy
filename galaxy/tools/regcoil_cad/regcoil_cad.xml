@@ -1,0 +1,35 @@
+<tool id="regcoil_cad" name="CAD from REGCOIL" version="0.1.0">
+
+    <description>Generation of CAD from REGCOIL output</description>
+
+    <requirements>
+      <container type="docker">nttaudom/regcoil-cad:25.11.24</container>
+    </requirements>
+
+    <command>
+      <![CDATA[
+      cp '$__tool_directory__/'*py ./ &&
+      cp '$regcoil_output' 'regcoil_out.reactor.nc' &&
+      cp '$nescin_file' 'nescin.out' &&
+      python3 3D_coil_gen.py --regcoil_path 'regcoil_out.reactor.nc' --nescin_path 'nescin.out' --coils_per_p $coils_per_p --p $periods --c_t $thickness 2>&1 &&
+      python3 Coil_ind_splines_pythonAPI.py --coils_per_p $coils_per_p --p $periods 2>&1 &&
+      zip -r coords.zip coords &&
+      cp 'coords.zip' '$coil_spec_csv' &&
+      cp 'cad_files.zip' '$coil_cad'
+      ]]>
+    </command>
+
+    <inputs>
+      <param type="integer" name="coils_per_p"  label="Coils per Period" help="Number of coils per period" />
+      <param type="integer" name="periods"  label="Periods" help="Number of periods in the configuration" />
+      <param type="float" name="thickness"  label="Coil Thickness" help="Thickness of the coils" />
+      <param type="data" name="nescin_file" label="VMEC Nescin Output" help="VMEC output file"/>
+      <param type="data" name="regcoil_output" label="Regcoil Output" help="Output from REGCOIL simulation"/>
+    </inputs>
+
+    <outputs>
+      <data format="zip" name="coil_cad" label="CAD Files (Zipped)" help="Coil CAD"/>
+      <data format="zip" name="coil_spec_csv" label="Coil Specification" help="Coil Spec Info for Vis"/>
+    </outputs>
+
+  </tool>

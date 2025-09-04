@@ -1,0 +1,33 @@
+<tool id="extract_openmc_tallies" name="Extract OpenMC Tallies" version="0.1.0">
+
+  <description>Extract all tally information from an OpenMC Statepoint file</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+      <![CDATA[
+        python '$__tool_directory__/extract_tallies.py' '$Statepoint' '$Tallies'
+      ]]>
+    </command>
+
+  <inputs>
+    <param type="data" name="Statepoint" label="Statepoint"
+      help="Statepoint file to extract tallies from. Format: h5" />
+  </inputs>
+
+  <outputs>
+    <data format="json" name="Tallies" label="Tallies"
+      help="Tallies output file. Format: JSON" />
+  </outputs>
+
+  <help>
+    This tool takes in a statepoint file from an OpenMC simulation and extracts all tally
+    information from it.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

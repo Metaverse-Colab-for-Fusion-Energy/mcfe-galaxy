@@ -1,0 +1,28 @@
+<tool id="capella_TBR_extract" name="TBR Tally Extraction" version="0.1.1">
+
+    <description>Extract TBR from the Capella workflow output</description>
+
+    <requirements>
+        <container type="docker">python:3.11</container>
+    </requirements>
+
+    <command>
+        <![CDATA[
+            python3 '$__tool_directory__/capella_TBR_extract.py' --tallies '$tallies_json' --TBR '$TBR_mean' --TBR_std '$TBR_std'
+        ]]>
+    </command>
+
+    <inputs>
+        <param type="data" name="tallies_json" label="Tallies JSON" help="Tallies Generated via Capella Workflow. Format: JSON."/>
+    </inputs>
+
+    <outputs>
+        <data format="text" name="TBR_mean" label="TBR" help="TBR mean calculated from the statepoint JSON."/>
+        <data format="text" name="TBR_std" label="TBR Standard Deviation" help="TBR mean calculated from the statepoint JSON."/>
+    </outputs>
+
+    <help>
+        Extracts the TBR from the Capella workflow output.
+    </help>
+
+</tool>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<toolbox monitor="true">
+  <section id="MCFE_OpenMC" name="MCFE OpenMC Tools">
+    <tool file="Galaxy-Tools/openmc/openmc.xml" />
+  </section>
+  <section id="MCFE_CAD_Converters" name="MCFE CAD Converters">
+    <tool file="Galaxy-Tools/USD_to_h5m/USD_to_h5m.xml" />
+    <tool file="Galaxy-Tools/h5m_to_vtk/h5m_to_vtk.xml" />
+    <tool file="Galaxy-Tools/obj_to_USD/obj_to_USD.xml" />
+    <tool file="Galaxy-Tools/vtp_to_obj/vtp_to_obj.xml" />
+    <tool file="Galaxy-Tools/stp_to_stl/stp_to_stl.xml" />
+    <tool file="Galaxy-Tools/stl_to_h5m/stl_to_h5m.xml" />
+    <tool file="Galaxy-Tools/h5m_to_stl/h5m_to_stl.xml" />
+    <tool file="Galaxy-Tools/stl_to_obj/stl_to_obj.xml" />
+    <tool file="Galaxy-Tools/tracks_to_vtp/tracks_to_vtp.xml" />
+  </section>
+  <section id="MCFE_Other_Converters" name="MCFE Converter Tools">
+    <tool file="Galaxy-Tools/normalise_tallies/normalise_tallies.xml" />
+    <tool file="Galaxy-Tools/h5m_materials/h5m_materials.xml" />
+    <tool file="Galaxy-Tools/flatten_USD/flatten_USD.xml" />
+    <tool file="Galaxy-Tools/extract_openmc_tallies/extract_openmc_tallies.xml" />
+    <tool file="Galaxy-Tools/json_string_to_file/json_string_to_file.xml" />
+    <tool file="Galaxy-Tools/json_file_to_string/json_file_to_string.xml" />
+  </section>
+  <section id="MCFE_Parametric_Tools" name="MCFE Parametric Tools">
+    <tool file="Galaxy-Tools/capella_paramak_generator/capella_paramak_generator.xml" />
+    <tool file="Galaxy-Tools/capella_openmc/capella_openmc.xml" />
+  </section>
+  <section id="MCFE_PINN_Tools" name="MCFE PINN Tools">
+    <tool file="Galaxy-Tools/heatflux_to_PINN/heatflux_to_PINN.xml" />
+    <tool file="Galaxy-Tools/paramak_to_PINN/paramak_to_PINN.xml" />
+    <tool file="Galaxy-Tools/sample_points_PINN/sample_points_PINN.xml" />
+    <tool file="Galaxy-Tools/visualisation_PINN/visualisation_PINN.xml" />
+    <tool file="Galaxy-Tools/modulus/modulus.xml" />
+  </section>
+  <section id="MCFE_Data" name="MCFE Data">
+    <tool file="Galaxy-Tools/minio_push/minio_push.xml" />
+    <tool file="Galaxy-Tools/minio_pull/minio_pull.xml" />
+  </section>
+  <section id="MCFE_Unstructured_Mesh_Tools" name="MCFE Unstructured Mesh Tools">
+    <tool file="Galaxy-Tools/unstructured_convert_heating/unstructured_convert_heating.xml" />
+    <tool file="Galaxy-Tools/unstructured_mesh_openmc/unstructured_mesh_openmc.xml" />
+    <tool file="Galaxy-Tools/unstructured_heatflux_to_PINN/unstructured_heatflux_to_PINN.xml" />
+  </section>
+  <section id="MCFE_Misc" name="MCFE Misc Tools">
+    <tool file="Galaxy-Tools/save-output-rocrate/save_output_rocrate.xml" />
+    <tool file="Galaxy-Tools/tile_paramak/tile_paramak.xml" />
+    <tool file="Galaxy-Tools/tile_openmc/tile_openmc.xml" />
+    <tool file="Galaxy-Tools/trained_PINN/trained_PINN.xml" />
+    <tool file="Galaxy-Tools/MQTT_pub/MQTT_pub.xml" />
+  </section>
+  <section id="MCFE_Deprecated" name="MCFE Deprecated Tools">
+    <tool file="Galaxy-Tools/paramak_generator/paramak_generator.xml" />
+    <tool file="Galaxy-Tools/openmc_parametric/openmc_parametric.xml" />
+    <tool file="Galaxy-Tools/paramak_generator_noplasma/paramak_generator_noplasma.xml" />
+  </section>
+  <section id="nTtau_Tools" name="nTtau Digital Tools">
+    <tool file="Galaxy-Tools/containment_vessel/containment_vessel.xml" />
+    <tool file="Galaxy-Tools/cylinder_gen/cylinder_gen.xml" />
+    <tool file="Galaxy-Tools/CylinderBCMesh/CylinderBCMesh.xml" />
+    <tool file="Galaxy-Tools/get_bounding_box/get_bounding_box.xml" />
+    <tool file="Galaxy-Tools/sphere_gen/sphere_gen.xml" />
+    <tool file="Galaxy-Tools/sphereBCMesh/sphereBCMesh.xml" />
+    <tool file="Galaxy-Tools/step_to_vtk/step_to_vtk.xml" />
+    <tool file="Galaxy-Tools/tokamak_gen/tokamak_gen.xml" />
+  </section>
+  <section id="LIBRTI_Tools" name="LIBRTI Tools">
+    <tool file="Galaxy-Tools/moose/moose.xml" />
+    <tool file="Galaxy-Tools/tmap8/tmap8.xml" />
+    <tool file="Galaxy-Tools/tmap_postprocess/tmap_postprocess.xml" />
+    <tool file="Galaxy-Tools/create_sample_msh/create_sample_msh.xml" />
+  </section>
+  <section id="Test" name="Test Tools">
+    <tool file="Galaxy-Tools/test.xml" />
+  </section>
+</toolbox>

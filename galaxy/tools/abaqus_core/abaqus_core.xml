@@ -1,0 +1,31 @@
+<tool id="abaqus_core" name="Abaqus Core" version="0.1.0">
+  <description>Abaqus Computaional Core</description>
+
+  <requirements>
+    <container type="docker">jacthyli/abaqus2023:latest</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      ln -fs '$Abaqus_input' job.py &&
+      /var/DassaultSystemes/SIMULIA/Commands/abaqus cae noGUI=job.py 2>&1 &&
+      ls -la &&
+      mv *.odb '$Abaqus_out'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="Abaqus_input" label="Abaqus Input" help=".py file"/>
+  </inputs>
+
+  <outputs>
+    <data format="odb" name="Abaqus_out" label="Abaqus Output"/>
+  </outputs>
+
+  <help>
+    This tool takes in a vtp file and converts it to an obj file.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

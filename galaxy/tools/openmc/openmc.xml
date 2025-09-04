@@ -1,0 +1,38 @@
+<tool id="openmc_neutronics" name="OpenMC Neutronics Simulation" version="0.1.0">
+
+  <description>Neutronics simulation via OpenMC</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python '$__tool_directory__/general_CAD.py' '$CAD' '$Settings' \${GALAXY_SLOTS} 2>&1 &&
+      ls -lh '$Tallies' &&
+      mv tracks.h5 '$Tracks' &&
+      mv tallies.out '$Tallies' &&
+      mv statepoint.3.h5 '$Statepoint' &&
+      ls -lh '$Tallies' 
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="Settings" label="settings.txt"/>
+    <param type="data" name="CAD" label="dagmc.h5m"/>
+  </inputs>
+
+  <outputs>
+    <data format="h5" name="Tracks" label="tracks"/>
+    <data format="out" name="Tallies" label="tallies"/>
+    <data format="h5" name="Statepoint" label="statepoint.3"/>
+  </outputs>
+
+  <help>
+    This tool takes in a 3D geometry and settings file to run a neutronics simulation via the OSS OpenMC.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

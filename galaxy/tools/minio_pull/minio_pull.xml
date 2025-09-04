@@ -1,0 +1,31 @@
+<tool id="minio_pull" name="MinIO Pull" version="0.1.0">
+
+    <description>Pull file from MinIO via URL</description>
+  
+    <requirements>
+      <container type="docker">williamjsmith15/omniverse-minio:04102023</container>
+    </requirements>
+  
+    <command>
+      <![CDATA[
+        python '$__tool_directory__/pull.py' '$Filename' '$Pull_Bucket' '$File'
+      ]]>
+    </command>
+  
+    <inputs>
+      <param type="text" name="Filename" label="Filename" help="Filename to pull. Format: String"/>
+      <param type="text" name="Pull_Bucket" label="Pull_Bucket" help="Bucket to pull from. Format: String"/>
+    </inputs>
+  
+    <outputs>
+      <data format="data" name="File" label="File" help="Saved file. Format: Any file"/>
+    </outputs>
+  
+    <help>
+      This tool pulls a file from a MinIO server in a given bucket.
+    </help>
+  
+    <citations>
+  
+    </citations>
+  </tool>

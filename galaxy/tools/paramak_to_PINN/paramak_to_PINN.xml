@@ -1,0 +1,44 @@
+<tool id="paramak_to_PINN" name="Paramak to PINN" version="0.1.0">
+
+  <description>Extract stl faces and body from Paramak STP.</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-freecad:31072023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      cp '$CAD' input.stp &&
+      freecadcmd '$__tool_directory__/paramak_to_PINN.py' &&
+      mv vessel.stl '$Output_Vessel' &&
+      mv inner.stl '$Output_Inner' &&
+      mv outer.stl '$Output_Outer' &&
+      mv side.stl '$Output_Side'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="CAD" label="CAD"
+      help="CAD File from Paramak Generator to clean up. Format: STP" />
+  </inputs>
+
+  <outputs>
+    <data format="stl" name="Output_Vessel" label="Output_Vessel"
+      help="samplePressureVessel CAD file. Format: stl" />
+    <data format="stl" name="Output_Inner" label="Output_Inner"
+      help="samplePressureVessel Inner CAD file. Format: stl" />
+    <data format="stl" name="Output_Outer" label="Output_Outer"
+      help="samplePressureVessel Outer CAD file. Format: stl" />
+    <data format="stl" name="Output_Side" label="Output_Side"
+      help="samplePressureVessel Side CAD file. Format: stl" />
+  </outputs>
+
+  <help>
+    This tool takes in a 3D STEP file from paramak, cleans up the geometry and generate the
+    necessary files for the Modulus PINN.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

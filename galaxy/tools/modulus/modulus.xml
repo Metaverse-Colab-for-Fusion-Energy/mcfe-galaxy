@@ -1,0 +1,50 @@
+<tool id="modulus" name="Modulus Heat Flow Simulation Training" version="0.1.0">
+
+  <description>Modulus Training Environment</description>
+
+  <requirements>
+    <container type="docker">nvcr.io/nvidia/modulus/modulus:24.04</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      mkdir conf &&
+      cp '$config' ./conf/config.yaml &&
+      cp '$reactorwall' ./reactorWall.STL &&
+      cp '$reactorwall_inner_sur' ./reactorWallInner.STL &&
+      cp '$reactorwall_outer_sur' ./reactorWallOuter.STL &&
+      cp '$reactorwall_side' ./reactorWallSide.STL &&
+      cp '$heat_flux' ./heat_flux.txt &&
+      cp '$interior_points' ./interior_points.txt &&
+      cp '$__tool_directory__/Heat_transfer.py' ./run.py &&
+      python run.py 2>&1 &&
+      mv ./outputs/run/inferencers/output.npz '$PINN_Output' &&
+      mv ./outputs/run/optim_checkpoint.0.pth '$PINN_optim' &&
+      mv ./outputs/run/u2_network.0.pth '$PINN_net'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="config" label="Config" />
+    <param type="data" name="reactorwall" label="Reactorwall" />
+    <param type="data" name="reactorwall_inner_sur" label="Reactor Wall Inner Surface" />
+    <param type="data" name="reactorwall_outer_sur" label="Reactor Wall Outer Surface" />
+    <param type="data" name="reactorwall_side" label="Reactor Wall Side Surface" />
+    <param type="data" name="heat_flux" label="Heat Flux" />
+    <param type="data" name="interior_points" label="Interior Points" />
+  </inputs>
+
+  <outputs>
+    <data format="npz" name="PINN_Output" label="PINN_Output" />
+    <data format="pth" name="PINN_optim" label="PINN_Optim" />
+    <data format="pth" name="PINN_net" label="PINN_Net" />
+  </outputs>
+
+  <help>
+    Train the Modulus Heat Flow Simulation - should use the output of this for the heat flow simulation tool.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

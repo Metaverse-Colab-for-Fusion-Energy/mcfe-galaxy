@@ -1,0 +1,32 @@
+<tool id="obj_to_usd_colour" name="obj to usd colour" version="0.1.0">
+  <description>CAD conversion from obj to usd to keep field colour</description>
+
+  <requirements>
+    <container type="docker">ghcr.io/metaverse-colab-for-fusion-energy/obj-to-usd-colour:011124</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      cp '$csv_field' /tmp/data.csv &&
+      cp '$obj_CAD' /tmp/in.obj &&
+      /home/usdzconvert/usdzconvert /tmp/in.obj /tmp/out.usd 2>&1 &&
+      mv /tmp/out.usd '$usd_CAD'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="obj_CAD" label="obj_CAD"/>
+    <param type="data" name="csv_field" label="csv_field"/>
+  </inputs>
+
+  <outputs>
+    <data format="usd" name="usd_CAD" label="usd_CAD"/>
+  </outputs>
+
+  <help>
+    This tool takes in a obj geometry with field data from a csv to produce a usd version of the CAD.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

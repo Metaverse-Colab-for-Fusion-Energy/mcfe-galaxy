@@ -1,0 +1,31 @@
+<tool id="download_nucleus" name="Download Nucleus" version="0.1.0">
+  <description>Download a file from the Nucleus</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/nucleus-api:17052024</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python3 '$__tool_directory__/download.py' '$url' '$username' '$password' '$file'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="text" name="url" label="URL" value="http://example.com/file.txt"/>
+    <param type="text" name="username" label="Username" value="your_username"/>
+    <param type="text" name="password" label="Password" value="your_password"/>
+  </inputs>
+
+
+  <outputs>
+    <data format="data" name="file" label="file"/>
+  </outputs>
+
+  <help>
+    This tools downloads a given file from a loaction on the nucleus using the nucleus api.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

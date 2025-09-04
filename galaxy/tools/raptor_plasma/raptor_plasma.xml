@@ -1,0 +1,31 @@
+<tool id="raptor_plasma" name="Raptor Ion Temperature" version="0.1.1">
+
+    <description>Simple plasma simulation using Raptor to predict ion temperature</description>
+
+    <requirements>
+        <container type="docker">ghcr.io/metaverse-colab-for-fusion-energy/raptor:191224</container>
+    </requirements>
+
+    <command>
+        <![CDATA[
+            cp '$__tool_directory__/run_script.m' . &&
+            cp '$__tool_directory__/run_raptor.m' . &&
+            octave --no-gui run_script.m '$current_drive' '$major_radius' 2>&1 &&
+            mv step_values.txt '$final_value'
+        ]]>
+    </command>
+
+    <inputs>
+        <param type="float" name="current_drive" label="Current Drive" value="4000000" help="Current drive (unknown units)."/>
+        <param type="float" name="major_radius" label="Major Radius" value="5.0" help="Major radius of the plasma in meters."/>
+    </inputs>
+
+    <outputs>
+        <data format="data" name="final_value" label="Final Ion Temperature" help="Final value of ion temperature."/>
+    </outputs>
+
+    <help>
+        Ion temperature prediction from current drive and major radius input using the plasma code raptor.
+    </help>
+
+</tool>

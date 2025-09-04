@@ -1,0 +1,32 @@
+<tool id="usd_h5m" name="USD to h5m" version="0.1.0">
+  <description>CAD conversion from USD to h5m</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <!-- Hard coded up axis for now -->
+    <![CDATA[
+      ln -fs '$USD_CAD' dagmc.usd &&
+      python '$__tool_directory__/usd_h5m.py' dagmc.usd dagmc.h5m Y 2>&1 &&
+      mv dagmc.h5m '$h5m_CAD'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="USD_CAD" label="dagmc.usd"/>
+    <!-- <param type="data" name="up_axis" label="xyz"/> -->
+  </inputs>
+
+  <outputs>
+    <data format="h5m" name="h5m_CAD" label="dagmc"/>
+  </outputs>
+
+  <help>
+    This tool takes in a USD geometry and up axis to produce a h5m version of the CAD to be run in OpenMC simulations.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

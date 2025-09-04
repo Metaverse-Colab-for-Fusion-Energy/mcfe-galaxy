@@ -1,0 +1,34 @@
+<tool id="odb_to_vtk" name="odb to vtk" version="0.1.0">
+  <description>CAD conversion from odb to vtk</description>
+
+  <requirements>
+    <container type="docker">jacthyli/abaqus2023:0.3</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      ls /home/abaqus-user/ &&
+      cp '$odb_file' /home/abaqus-user/in.odb &&
+      ls /home/abaqus-user/ &&
+      abaqus cae noGUI='$__tool_directory__/vtk_to_obj.py' -i /home/abaqus-user/in.odb -f '$field_name' &&
+      ls /home/abaqus-user/ &&
+      mv FE_res.vtk '$vtk_CAD'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="odb_file" label="odb_file"/>
+    <param type="text" name="field_name" label="field_name" value="NT11"/>
+  </inputs>
+
+  <outputs>
+    <data format="vtk" name="vtk_CAD" label="vtk_CAD"/>
+  </outputs>
+
+  <help>
+    This tool takes in a odb geometry to produce a vtk version of the CAD.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

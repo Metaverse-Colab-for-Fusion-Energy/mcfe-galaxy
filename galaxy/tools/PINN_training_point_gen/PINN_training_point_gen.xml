@@ -1,0 +1,37 @@
+<tool id="PINN_training_point_gen" name="PINN Interior Sample Point Generator" version="0.1.0">
+
+    <description>Sample point generator for interior points for training PINN</description>
+  
+    <requirements>
+      <container type="docker">nvcr.io/nvidia/modulus/modulus:23.05</container>
+    </requirements>
+  
+    <command>
+      <![CDATA[
+        cp '$CAD_Input' Output_Vessel.stl &&
+        cp '$__tool_directory__/PINN_training_point_gen.py' ./run.py &&
+        python run.py -n '$num_points' 2>&1 &&
+        mv test.txt '$Points'
+      ]]>
+    </command>
+  
+    <inputs>
+        <param type="integer" name="num_points" label="Number of Points"
+          help="Number of points to generate for the PINN to sample from." value="50000" />
+        <param type="data" name="CAD_Input" label="CAD_Input"
+          help="CAD Input for Sample Point Generation (From Paramak Generator). Format: STL" />
+      </inputs>
+    
+      <outputs>
+        <data format="txt" name="Points" label="Points"
+          help="List of points for the PINN to sample from. Format: txt" />
+      </outputs>
+  
+    <help>
+      Sample point generator for interior points for training PINN
+    </help>
+  
+    <citations>
+  
+    </citations>
+  </tool>

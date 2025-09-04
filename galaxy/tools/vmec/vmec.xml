@@ -1,0 +1,25 @@
+<tool id="vmec" name="vmec" version="0.1.1">
+
+    <description>STELLOPT simulation for a stellarator optimisation (vmec)</description>
+
+    <requirements>
+      <container type="docker">nttaudom/stellopt:01.02.24</container>
+    </requirements>
+
+    <command>
+      <![CDATA[
+      cp '$input' 'input.reactor' &&
+      mpirun -np \${GALAXY_SLOTS} xvmec2000 input.reactor &&
+      cp 'wout_reactor.nc' '$vmec_output'
+      ]]>
+    </command>
+
+    <inputs>
+      <param type="data" name="input" label="Input" help="VMEC input file"/>
+    </inputs>
+
+    <outputs>
+      <data format="data" name="vmec_output" label="vmec output" help="vmec output file"/>
+    </outputs>
+
+  </tool>

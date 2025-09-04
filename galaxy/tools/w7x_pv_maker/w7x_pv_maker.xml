@@ -1,0 +1,43 @@
+<tool id="w7x_pv_maker" name="W7X Pressure Vessel Generator" version="1.0.0">
+
+  <description>Generates a pressure vessel STEP file based on rotation angle and thickness.</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      mkdir \$_GALAXY_JOB_TMP_DIR/matplotlib &&
+      export MPLCONFIGDIR=\$_GALAXY_JOB_TMP_DIR/matplotlib &&
+      python3 '$__tool_directory__/w7x_pv_maker.py' --rotation_angle '$Rotation_Angle' --thickness '$Thickness' && mv ./w7xPV.stp '$Output_File'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="integer" name="Rotation_Angle" label="Rotation Angle (degrees)" value="180" min="1" max="360" help="Rotation angle for the pressure vessel (1-360 degrees). Default is 180 degrees." />
+    <param type="float" name="Thickness" label="Thickness (cm)" value="2.5" help="Thickness of the pressure vessel in cm. Default is 2.5 cm." />
+  </inputs>
+
+  <outputs>
+    <data format="step" name="Output_File" label="Generated Pressure Vessel STEP File" help="STEP file of the generated w7x pressure vessel." />
+  </outputs>
+
+  <help>
+    This tool generates a STEP file of a pressure vessel based on the specified rotation angle and thickness.
+
+    **Inputs:**
+    - **Rotation Angle**: Specify the rotation angle for the pressure vessel (1 to 360 degrees). Default is 180 degrees.
+    - **Thickness**: Specify the thickness of the pressure vessel in cm. Default is 2.5 cm.
+
+    **Outputs:**
+    - A STEP file of the pressure vessel.
+
+    **Usage:**
+    Adjust the input parameters and run the tool to generate the pressure vessel STEP file.
+  </help>
+
+  <citations>
+    <!-- Add citations here if needed -->
+  </citations>
+</tool>

@@ -1,0 +1,34 @@
+<tool id="json_append" name="JSON Append" version="0.1.0">
+
+    <description>Takes JSON File Input and Converts to JSON String</description>
+  
+    <requirements>
+      <container type="docker">python:3.7-alpine</container>
+    </requirements>
+  
+    <command>
+        <![CDATA[
+        python '$__tool_directory__/json_append.py' '$JSON_File_1' '$JSON_File_2' '$JSON_Out'
+        ]]>
+      </command>
+  
+    <inputs>
+      <param type="data" name="JSON_File_1" label="JSON_File_1"
+        help="JSON File to write. Format: JSON" />
+      <param type="data" name="JSON_File_2" label="JSON_File_2"
+        help="JSON File to write. Format: JSON" />
+    </inputs>
+  
+    <outputs>
+      <data type="json" name="JSON_Out" label="JSON_Out"
+        help="Appended JSON Output. Format: JSON" />
+    </outputs>
+  
+    <help>
+      This tool allows JSON files to be appended to one another.
+    </help>
+  
+    <citations>
+  
+    </citations>
+  </tool>

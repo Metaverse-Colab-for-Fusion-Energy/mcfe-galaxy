@@ -1,0 +1,32 @@
+<tool id="json_to_yaml" name="JSON to YAML" version="0.1.0">
+
+  <description>Convert JSON file to YAML</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/json_to_yaml:18072024</container>
+  </requirements>
+
+  <command>
+      <![CDATA[
+        python '$__tool_directory__/json_to_yaml.py' '$json_file' '$yaml_out'
+      ]]>
+    </command>
+
+  <inputs>
+    <param type="data" name="json_file" label="JSON File"
+      help="JSON file to convert. Format: JSON" />
+  </inputs>
+
+  <outputs>
+    <data format="yaml" name="yaml_out" label="YAML File"
+      help="YAML file from the JSON Input. Format: YAML" />
+  </outputs>
+
+  <help>
+    This tool takes JSON file input and converts to a YAML file.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

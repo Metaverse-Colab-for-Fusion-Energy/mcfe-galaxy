@@ -1,0 +1,37 @@
+<tool id="unstructured_mesh_openmc" name="OpenMC Unstructured Mesh" version="0.1.0">
+
+  <description>Neutronics simulation via OpenMC with Unstructured Mesh Input</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+      <![CDATA[
+        python '$__tool_directory__/unstructured_mesh_openmc.py' '$CAD' '$Config' '$Unstructured_Mesh' '$Statepoint' \${GALAXY_SLOTS} 2>&1
+      ]]>
+    </command>
+
+  <inputs>
+    <param type="data" name="Config" label="Config"
+      help="Parametric input for OpenMC simulation. Format: JSON" />
+    <param type="data" name="CAD" label="CAD"
+      help="Parametric CAD file, created by inputting the same config file as this into the 'Paramak Geometry Creator'. Format: h5m" />
+    <param type="data" name="Unstructured_Mesh" label="Unstructured_Meshh"
+      help="Unstructured mesh file for OpenMC. Format: h5m" />
+  </inputs>
+
+  <outputs>
+    <data format="h5" name="Statepoint" label="Statepoint"
+      help="State save of the OpenMC run. Format: h5" />
+  </outputs>
+
+  <help>
+    Temporary tooling to demonstrate full workflow running - will be superseded by a single tool in
+    the future with the JSON update.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

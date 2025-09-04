@@ -1,0 +1,39 @@
+<tool id="abaqus_subroutine" name="Abaqus SubRoutine" version="0.1.0">
+  <description>Abaqus Running with a SubRoutine</description>
+
+  <requirements>
+    <container type="docker">jacthyli/abaqus2023:0.3</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      ln -fs '$Abaqus_input' job.inp &&
+      ln -fs '$Abaqus_subroutine' DFLUX.for &&
+      [ -f "$Abaqus_optional_txt" ] && cp "$Abaqus_optional_txt" /home/abaqus-user/optional.txt || echo "Optional file not provided." &&
+      /var/DassaultSystemes/SIMULIA/Commands/abaqus job=job.inp user=DFLUX.for cpus=\${GALAXY_SLOTS:-1} interactive 2>&1 &&
+      mv *.odb '$Abaqus_out'
+    ]]>
+  </command>
+<!-- Should add this back in sometime, but getting tooling working for now
+  &&
+  cat job.log &&
+  mv *.log '$Abaqus_log' -->
+
+  <inputs>
+    <param type="data" name="Abaqus_input" label="Abaqus Input" help=".inp file"/>
+    <param type="data" name="Abaqus_subroutine" label="Abaqus SubRoutine"/>
+    <param type="data" name="Abaqus_optional_txt" label="Abaqus Optional Text" optional="true"/>
+  </inputs>
+
+  <outputs>
+    <data format="odb" name="Abaqus_out" label="Abaqus Output"/>
+    <!-- <data format="txt" name="Abaqus_log" label="Abaqus Log"/> -->
+  </outputs>
+
+  <help>
+    This tool runs an Abaqus simulation with a user-defined subroutine. The subroutine should be provided as a .for file. The optional text file can be used to provide additional input to the simulation.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

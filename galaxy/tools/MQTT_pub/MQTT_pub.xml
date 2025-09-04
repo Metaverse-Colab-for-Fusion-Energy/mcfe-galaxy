@@ -1,0 +1,36 @@
+<tool id="MQTT_pub" name="Message Sender" version="0.1.0">
+
+    <description>MQTT Message Publisher</description>
+
+    <requirements>
+        <container type="docker">williamjsmith15/galaxy-listener:23052024</container>
+    </requirements>
+
+    <command>
+      <![CDATA[
+        python '$__tool_directory__/send.py' '$Server' '$Topic' '$Message' '$Username' '$Password'
+      ]]>
+    </command>
+
+    <inputs>
+        <param type="text" name="Server" label="Server" help="Server address. Format: String"
+            value="mqtt.mcfe.itservices.manchester.ac.uk" />
+        <param type="text" name="Topic" label="Topic"
+            help="Topic to send message on. Format: String" value="/galaxy/tool/output" />
+        <param type="data" name="Message" label="Message" help="Message to send. Format: JSON" />
+        <param type="text" name="Username" label="Username" help="Username. Format: String"/>
+        <param type="text" name="Password" label="Password" help="Password. Format: String" />
+    </inputs>
+
+    <outputs>
+    </outputs>
+
+    <help>
+        MQTT Message Publisher, will send a message with a given topic, on server address
+        provided, with username and password.
+    </help>
+
+    <citations>
+
+    </citations>
+</tool>

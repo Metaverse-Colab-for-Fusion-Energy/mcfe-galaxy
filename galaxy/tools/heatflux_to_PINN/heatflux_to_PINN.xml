@@ -1,0 +1,38 @@
+<tool id="heatflux_to_PINN" name="Heat Flux to PINN" version="0.1.0">
+
+  <description>Take in heat flux output from OpenMC and convert to heat flux input for PINN</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      cat '$Input_Points' | tr -s ' ' > input_coords.txt &&
+      python '$__tool_directory__/heatflux_to_PINN.py' '$Heatflux' input_coords.txt '$Heatflux_at_Points'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="Heatflux" label="Heatflux"
+      help="Heatflux output from OpenMC, converted to vtk. Format: vtk" />
+    <param type="data" name="Input_Points" label="Input_Points"
+      help="Input points from PINN Sample Point Generator. Format: txt" />
+  </inputs>
+
+  <outputs>
+    <data format="txt" name="Heatflux_at_Points" label="Heatflux_at_Points"
+      help="List of sample points with accociated heat flux. Format: txt" />
+  </outputs>
+
+  <help>
+    This tool takes in a vtk heat flux file from OpenMC and a txt file with a list of points and
+    then outputs a list of heating values at these points.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>
+
+<!-- TODO: New container for this tool -->

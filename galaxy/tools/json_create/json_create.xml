@@ -1,0 +1,34 @@
+<tool id="json_create" name="JSON Create" version="0.1.0">
+
+    <description>Create JSON Objects with Strings</description>
+  
+    <requirements>
+      <container type="docker">python:3.7-alpine</container>
+    </requirements>
+  
+    <command>
+      <![CDATA[
+        python '$__tool_directory__/json_create.py' '$key' '$value' '$JSON_Out'
+      ]]>
+    </command>
+  
+    <inputs>
+      <param type="text" name="key" label="key"
+        help="JSON Key. Format: text" />
+      <param type="text" name="value" label="value"
+        help="JSON Value. Format: text" />
+    </inputs>
+  
+    <outputs>
+      <data type="json" name="JSON_Out" label="JSON_Out"
+        help="JSON key value pair. Format: JSON" />
+    </outputs>
+  
+    <help>
+      This tool allows JSON pairs to be created.
+    </help>
+  
+    <citations>
+  
+    </citations>
+  </tool>

@@ -1,0 +1,38 @@
+<tool id="create_sample_msh" name="GDPs sample mesh generator" version="0.1.0">
+
+  <description>generate mesh for disk sample</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-gmsh:05092023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python3 '$__tool_directory__/create_sample_msh.py' '$sample_diameter' '$sample_thickness' &&
+      mv mesh.msh '$Mesh_Output' &&
+      mv num_nodes.txt '$num_nodes'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="float" name="sample_diameter" label="Sample Diameter"
+      help="Diameter of the sample cylinder in mm" value="15.0"/>
+    <param type="float" name="sample_thickness" label="Sample Thickness"
+      help="Thickness of the sample cylinder in mm" value="2.0"/>
+  </inputs>
+
+  <outputs>
+    <data format="msh" name="Mesh_Output" label="Mesh_Output"
+      help="Mesh Output for GDPs sample. Format: msh" />
+    <data format="txt" name="num_nodes" label="Number of Nodes"
+      help="Number of nodes in the generated mesh. Format: txt" />
+  </outputs>
+
+  <help>
+    This tool generates a mesh for a cylindrical sample based on the specified diameter and thickness.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

@@ -1,0 +1,36 @@
+<tool id="visualisation_PINN" name="PINN Visualisation" version="0.1.0">
+
+    <description>Produce visualistaion of PINN simulation</description>
+
+    <requirements>
+        <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+    </requirements>
+
+    <command>
+      <![CDATA[
+        python '$__tool_directory__/visualisation_PINN.py' '$PINN_Result' '$Input_Mesh' '$Output_Vis'
+      ]]>
+    </command>
+
+    <inputs>
+        <param type="data" name="PINN_Result" label="PINN_Result"
+            help="Output from PINN simulation. Format: npz" />
+        <param type="data" name="Input_Mesh" label="Input_Mesh"
+            help="Input mesh from PINN Sample Point Generator. Format: vtk" />
+    </inputs>
+
+    <outputs>
+        <data format="vtk" name="Output_Vis" label="Output_Vis"
+            help="Visualisation file with the results of the PINN. Format: vtk" />
+    </outputs>
+
+    <help>
+        This tool takes in a PINN result and the input mesh and outputs a visualisation file.
+    </help>
+
+    <citations>
+
+    </citations>
+</tool>
+
+<!-- TODO: New container for this tool -->

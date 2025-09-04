@@ -1,0 +1,30 @@
+<tool id="stl_to_h5m" name="stl to h5m" version="0.1.0">
+  <description>CAD conversion from step to h5m</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-meshio:20072023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      ln -fs '$stl_CAD' dagmc.stl &&
+      meshio convert dagmc.stl dagmc.h5m 2>&1 &&
+      mv dagmc.h5m '$h5m_CAD'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="stl_CAD" label="dagmc.stl"/>
+  </inputs>
+
+  <outputs>
+    <data format="h5m" name="h5m_CAD" label="dagmc"/>
+  </outputs>
+
+  <help>
+    This tool takes in a stl geometry to produce a h5m version of the CAD to be run in OpenMC simulations.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

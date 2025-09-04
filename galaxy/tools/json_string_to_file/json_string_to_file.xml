@@ -1,0 +1,35 @@
+<tool id="json_string_to_file" name="JSON String to File" version="0.1.0">
+
+  <description>Takes JSON String Input and Converts to JSON File</description>
+
+  <requirements>
+    <container type="docker">python:3.7-alpine</container>
+  </requirements>
+
+  <command>
+      <![CDATA[
+        echo '$JSON_String' > json_string.txt &&
+        python '$__tool_directory__/json_string_to_file.py' json_string.txt '$JSON_File'
+      ]]>
+    </command>
+
+  <inputs>
+    <param type="text" name="JSON_String" label="JSON_String" help="String JSON Input. Format: JSON String">
+      <sanitizer sanitize="false" />
+    </param>
+  </inputs>
+
+  <outputs>
+    <data format="json" name="JSON_File" label="JSON_File"
+      help="JSON File Output. Format: JSON" />
+  </outputs>
+
+  <help>
+    This tool allows for conversion of a JSON string to a JSON file to allow
+    text based inputs for tools that normally take in a file.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

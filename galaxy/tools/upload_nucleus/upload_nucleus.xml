@@ -1,0 +1,32 @@
+<tool id="upload_nucleus" name="Upload Nucleus" version="0.1.0">
+    <description>Upload a file to the Nucleus</description>
+  
+    <requirements>
+      <container type="docker">williamjsmith15/nucleus-api:17052024</container>
+    </requirements>
+  
+    <command>
+      <![CDATA[
+        python3 '$__tool_directory__/upload_nucleus.py' '$url' '$username' '$password' '$upload_file' '$upload_file.element_identifier' '$file_type'
+      ]]>
+    </command>
+  
+    <inputs>
+      <param type="text" name="url" label="URL" value="http://example.com/file.txt"/>
+      <param type="text" name="username" label="Username" value="your_username"/>
+      <param type="text" name="password" label="Password" value="your_password"/>
+      <param type="data" name="upload_file" label="Upload File"/>
+      <param type='text' name='file_type' label='File Type' value='dat'/>
+    </inputs>
+  
+  
+    <outputs>
+    </outputs>
+  
+    <help>
+      This tools takes a given file and uploads to a loaction on the nucleus using the nucleus api.
+    </help>
+  
+    <citations>
+    </citations>
+  </tool>

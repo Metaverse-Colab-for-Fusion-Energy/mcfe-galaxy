@@ -1,0 +1,34 @@
+<tool id="json_create_file_value" name="JSON Create From File" version="0.1.0">
+
+    <description>Takes JSON File Input and Converts to JSON</description>
+  
+    <requirements>
+      <container type="docker">python:3.7-alpine</container>
+    </requirements>
+  
+    <command>
+      <![CDATA[
+        python '$__tool_directory__/json_create_file_value.py' '$key' '$value' '$JSON_Out'
+      ]]>
+    </command>
+  
+    <inputs>
+      <param type="text" name="key" label="key"
+        help="JSON Key. Format: text" />
+      <param type="data" name="value" label="value"
+        help="JSON Value. Format: data file" />
+    </inputs>
+  
+    <outputs>
+      <data type="json" name="JSON_Out" label="JSON_Out"
+        help="JSON key value pair. Format: JSON" />
+    </outputs>
+  
+    <help>
+      This tool allows JSON pairs to be created.
+    </help>
+  
+    <citations>
+  
+    </citations>
+  </tool>

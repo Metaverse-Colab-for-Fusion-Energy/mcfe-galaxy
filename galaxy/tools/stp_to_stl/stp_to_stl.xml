@@ -1,0 +1,31 @@
+<tool id="stp_to_stl" name="stp to stl" version="0.1.0">
+  <description>CAD conversion from step to h5m</description>
+
+  <requirements>
+    <!-- <requirement type="package">freecad-python3</requirement> -->
+    <container type="docker">williamjsmith15/omniverse-freecad:31072023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      ln -fs '$stp_CAD' dagmc.stp &&
+      freecadcmd '$__tool_directory__/stp_to_stl.py' &&
+      mv dagmc.stl '$stl_CAD'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="stp_CAD" label="dagmc.stp"/>
+  </inputs>
+
+  <outputs>
+    <data format="stl" name="stl_CAD" label="dagmc"/>
+  </outputs>
+
+  <help>
+    This tool takes in a stp geometry to produce a stl version of the CAD to be run in OpenMC simulations.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

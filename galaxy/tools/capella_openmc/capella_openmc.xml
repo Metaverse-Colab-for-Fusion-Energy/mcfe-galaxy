@@ -1,0 +1,35 @@
+<tool id="capella_openmc" name="OpenMC Parametric" version="0.1.0">
+
+  <description>Parametric neutronics simulation via OpenMC for Capella</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+      <![CDATA[
+        python '$__tool_directory__/capella_openmc.py' '$CAD' '$Config' '$Statepoint' \${GALAXY_SLOTS:-1} 2>&1
+      ]]>
+    </command>
+
+  <inputs>
+    <param type="data" name="Config" label="Config"
+      help="Parametric input for OpenMC simulation. Format: JSON" />
+    <param type="data" name="CAD" label="CAD"
+      help="Parametric CAD file, created by inputting the same config file as this into the 'Paramak Geometry Creator'. Format: h5m" />
+  </inputs>
+
+  <outputs>
+    <data format="h5" name="Statepoint" label="Statepoint"
+      help="Statepoint from the OpenMC run - for use in analysis. Format: h5" />
+  </outputs>
+
+  <help>
+    This tool takes in a 3D geometry and parameterised config file to run a neutronics simulation
+    via the OSS OpenMC.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

@@ -1,0 +1,33 @@
+<tool id="unstructured_convert_heating" name="OpenMC Convert Heating" version="0.1.0">
+
+  <description>Convert OpenMC 'heating-local' files on an unstructured mesh</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python '$__tool_directory__/unstructured_convert_heating.py' '$Statepoint' '$Converted_Tallies' 2>&1
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="Statepoint" label="Statepoint"
+      help="State file with information of the neutronics simualtion. Format: h5" />
+  </inputs>
+
+  <outputs>
+    <data format="vtk" name="Converted_Tallies" label="Converted_Tallies"
+      help="Output converted heating values on the mesh. Format: vtk" />
+  </outputs>
+
+  <help>
+    This tool takes an OpenMC statepoint and calibrates it according to an unstructured mesh, then
+    outputs
+    in vtk format.
+  </help>
+
+  <citations>
+  </citations>
+</tool>

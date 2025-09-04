@@ -1,0 +1,35 @@
+<tool id="capella_paramak_generator" name="Paramak Geometry Creator" version="0.1.0">
+
+  <description>Parametric Reactor Geometry Creator For Capella</description>
+
+  <requirements>
+    <container type="docker">williamjsmith15/omniverse-openmc:05062023</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      mkdir \$_GALAXY_JOB_TMP_DIR/matplotlib &&
+      export MPLCONFIGDIR=\$_GALAXY_JOB_TMP_DIR/matplotlib &&
+      python3 '$__tool_directory__/capella_paramak_generator.py' '$Config' &&
+      mv dagmc.h5m '$Geometry_Output'
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="Config" label="Config"
+      help="Parametric input for paramak geometry creation. Format: JSON" />
+  </inputs>
+
+  <outputs>
+    <data format="h5m" name="Geometry_Output" label="Geometry_Output"
+      help="CAD file for use in OpenMC neutroncis simulations. Format: h5m" />
+  </outputs>
+
+  <help>
+    This tool takes a set of parameters and outputs a geometry ready for simulation in OpenMC.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

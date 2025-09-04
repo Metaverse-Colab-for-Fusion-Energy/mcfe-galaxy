@@ -1,0 +1,31 @@
+<tool id="stellarator_plasma_cad" name="VMEC Plasma Gen" version="0.1.1">
+
+    <description>Generation of CAD from VMECbet output using JSON for configuration</description>
+
+    <requirements>
+        <container type="docker">nttaudom/regcoil-cad:25.11.24</container>
+    </requirements>
+
+    <command>
+        <![CDATA[
+        mkdir \$_GALAXY_JOB_TMP_DIR/matplotlib &&
+        export MPLCONFIGDIR=\$_GALAXY_JOB_TMP_DIR/matplotlib &&
+        cp '$__tool_directory__/'*py ./ &&
+        cp '$vmec_input' 'input.reactor' &&
+        cp '$json_config' 'config.json' &&
+        python3 vmec_cad_all.py --file_in 'input.reactor' --config 'config.json' &&
+        python3 zip_cad.py &&
+        cp 'rad_build.zip' '$plasma_cad'
+        ]]>
+    </command>
+
+    <inputs>
+        <param type="data" name="vmec_input" label="VMEC Input File" help="VMEC input file" format="txt"/>
+        <param type="data" name="json_config" label="Configuration JSON" help="JSON file containing nP, nT, plasma thickness, blanket shape, and period" format="json"/>
+    </inputs>
+
+    <outputs>
+        <data format="zip" name="plasma_cad" label="Plasma CAD" help="CAD of Plasma layer of stellarator. Format: STEP"/>
+    </outputs>
+
+</tool>
