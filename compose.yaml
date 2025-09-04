@@ -87,8 +87,8 @@ services:
     build:
       context: .
       dockerfile_inline: |
-        FROM alpine:3.22
-        RUN apk update && apk add gettext bash
+        FROM ubuntu:22.04
+        RUN apt update && apt install gettext
         COPY ./galaxy/init/template.sh /template.sh
     container_name: ${PROJECT_NAME}-galaxy-template-eval
     env_file: .env
