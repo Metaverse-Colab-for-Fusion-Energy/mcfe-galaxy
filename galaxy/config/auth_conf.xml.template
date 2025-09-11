@@ -27,7 +27,7 @@
       <allow-password-change>False</allow-password-change>
       
       <!-- LDAP-specific options -->
-      <server>ldap://${GALAXY_LDAP_SEVER}:${GALAXY_LDAP_PORT}</server>
+      <server>ldap://${GALAXY_LDAP_SERVER}:${GALAXY_LDAP_PORT}</server>
       
       <!-- Additional options for the LDAP connection. The syntax is:
            option1=value1,option2=value2,...
