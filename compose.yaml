@@ -31,7 +31,6 @@ services:
         ENV UV_CACHE=/tmp/uv_cache
         RUN sed -i '/wheels.galaxyproject.org/d' pyproject.toml
         RUN uv add boto3 --index https://pypi.org/simple
-        RUN /galaxy/server/.venv/bin/pip3 install ldap3
     restart: unless-stopped
     group_add:
       - ${DOCKER_GID}
@@ -55,8 +54,6 @@ services:
       # Add custom configuration files
       - ./galaxy/config/tool_conf.xml:/galaxy/server/config/tool_conf.xml
       - ./galaxy/config/datatypes_conf.xml:/galaxy/server/config/datatypes_conf.xml
-      # Patch galaxy while awaiting PR
-      - ./galaxy/lib/ldap_ad.py:/galaxy/server/lib/galaxy/auth/providers/ldap_ad.py
       # Provide docker-in-docker
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
