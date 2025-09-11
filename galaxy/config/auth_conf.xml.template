@@ -56,7 +56,6 @@
       <search-fields>uid,mail</search-fields>
       <search-base>ou=people,dc=example,dc=com</search-base>
       <search-filter>(uid={username})</search-filter>
-      
       <search-user>uid=${GALAXY_LDAP_BIND_USER},ou=people,dc=example,dc=com</search-user>
       <search-password>${GALAXY_LDAP_BIND_PASSWORD}</search-password>
       

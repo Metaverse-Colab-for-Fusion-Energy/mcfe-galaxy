@@ -33,6 +33,10 @@ galaxy:
   id_secret: 'morestufftoreplace'
   log_level: WARNING
 
+  # Use remote users
+  use_remote_user: true
+  remote_user_maildomain: example.org
+
   # Watch file changes 
   watch_tools: 'true'
   watch_job_rules: 'true'
@@ -100,7 +104,6 @@ galaxy:
   file_sources_config_file: /galaxy/server/config/file_sources_conf.yml
 
   # File paths
-  auth_config_file: /galaxy/server/config/auth_conf.xml
   builds_file_path: /galaxy/server/tool-data/shared/ucsc/builds.txt.sample
   container_resolvers_config_file: ''
   data_manager_config_file: /galaxy/server/config/data_manager_conf.xml.sample
