@@ -78,7 +78,6 @@ galaxy:
   retry_job_output_collection: 3
 
   # Debugging
-  cleanup_job: onsuccess
   allow_user_impersonation: true
 
   # Object Store
