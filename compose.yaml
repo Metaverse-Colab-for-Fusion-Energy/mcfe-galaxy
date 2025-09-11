@@ -30,7 +30,8 @@ services:
         ENV HOME=/tmp
         ENV UV_CACHE=/tmp/uv_cache
         RUN sed -i '/wheels.galaxyproject.org/d' pyproject.toml
-        RUN uv add boto3 ldap3 --index https://pypi.org/simple
+        RUN uv add boto3 --index https://pypi.org/simple
+        RUN /galaxy/server/.venv/bin/pip3 install ldap3
     restart: unless-stopped
     group_add:
       - ${DOCKER_GID}
