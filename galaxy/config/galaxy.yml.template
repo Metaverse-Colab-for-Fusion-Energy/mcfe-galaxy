@@ -11,7 +11,7 @@ gravity:
     enable: true
     tusd_path: /usr/local/sbin/tusd
     upload_dir: /galaxy/server/data/tus/
-    extra_args: -verbose
+    extra_args: '-verbose'
   # handlers:
   #   handler:
   #     processes: 2
