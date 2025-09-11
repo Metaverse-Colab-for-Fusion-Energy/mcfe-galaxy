@@ -64,7 +64,7 @@ galaxy:
   new_user_dataset_access_role_default_private: true
 
   # TUS
-  galaxy_infrastructure_url: "http://localhost:8080"
+  galaxy_infrastructure_url: "$GALAXY_URL"
   tus_upload_store: /galaxy/server/data/tus/
 
   # SQL Performance
