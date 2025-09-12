@@ -2,7 +2,7 @@ gravity:
   gunicorn:
     bind: 0.0.0.0:8080
     workers: 2
-    extra_ars: '--forwarded-allow-ips="*"'
+    extra_args: '--forwarded-allow-ips="*"'
     preload: true
   celery:
     concurrency: 2
