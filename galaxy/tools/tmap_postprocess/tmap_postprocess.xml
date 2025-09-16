@@ -23,7 +23,7 @@
 
   <inputs>
     <param type="float" name="simulation_time" label="Simulation Time" help="Simulation Time (s)" value="10.0"/>
-    <param type="float" name="interval_time" label="Interval Time" help="Interval Time (s)" value="5"/>
+    <param type="float" name="interval_time" label="Interval Time" help="Interval Time (s)" value="1"/>
     <param name="all_outputs" type="data_collection" collection_type="list" label="All Output Files" />
   </inputs>
 

@@ -8,8 +8,8 @@
 
     <command>
       <![CDATA[
-        cp '$tamp_input' 'input.i' &&
-        cp '$mesh_file' 'mesh.msh' &&
+        if [ -n "$tamp_input" ] && [ "$tamp_input" != "None" ]; then cp "$tamp_input" "input.i"; else cp "$__tool_directory__/example_input.i" "input.i"; fi &&
+        if [ -n "$mesh_file" ] && [ "$mesh_file" != "None" ]; then cp "$mesh_file" "mesh.msh"; else cp "$__tool_directory__/example_mesh.msh" "mesh.msh"; fi &&
         sed -i 's|file = .*|file = "mesh.msh"|' input.i &&
         sed -i 's|simulation_time = .*|simulation_time = '$simulation_time'|' input.i &&
         sed -i 's|pressure_inlet = .*|pressure_inlet = '$pressure_inlet'|' input.i &&
@@ -22,21 +22,20 @@
         mkdir -p output &&
         mv *.pvtu output/ &&
         mv *.vtu output/  &&
-        cp input_out.csv "$csv_output"
-
+        cp input_out.csv "$csv_output" 
       ]]>
     </command>
 
     <inputs>
-      <param type="data" name="tamp_input" label="TMAP Input File" help="Simulation input parameters. Format: .i"/>
-      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .msh"/>
+      <param type="data" name="tamp_input" label="TMAP Input File" help="Simulation input parameters. Format: .i" optional="true"/>
+      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .msh" optional="true"/>
       <param type="float" name="solubility" label="Solubility" help="solubility (mol/m^3/Pa^0.5)" value="4e-2" />
       <param type="float" name="diffusivity" label="Diffusivity" help="diffusivity (m^2/s)" value="1.5e-9"/>
       <param type="float" name="temperature" label="Temperature" help="temperature (K)" value="773.15"/>
       <param type="float" name="V_chamber" label="Chamber Volume" help="Chamber Volume (m^3)" value="3.278e-5"/>
       <param type="float" name="pressure_inlet" label="Inlet pressure" help="Inlet pressure (Pa)" value="42000.0"/>
       <param type="float" name="simulation_time" label="Simulation Time" help="Simulation Time (s)" value="10.0"/>
-      <param type="float" name="interval_time" label="Interval Time" help="Interval Time (s)" value="5"/>
+      <param type="float" name="interval_time" label="Interval Time" help="Interval Time (s)" value="1"/>
       
     </inputs>
 

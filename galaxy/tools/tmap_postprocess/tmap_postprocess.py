@@ -33,7 +33,7 @@ args = parser.parse_args()
 extracted_outputs = []
 with tempfile.TemporaryDirectory() as tmpdir:
     copied_files = []
-
+    print(args.simulation_outputs)
     with open(args.simulation_outputs) as f:
         all_outputs = [line.strip() for line in f if line.strip()]
 
@@ -49,7 +49,7 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
     for original_name, ext, tmp_filepath in copied_files:
         if ext == "vtu":
-            continue  # Skip if not a vtu file
+            continue  
         mesh = pv.read(tmp_filepath)
 
         gc.collect()
