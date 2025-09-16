@@ -3,26 +3,59 @@
     <description>MOOSE Thermal Heating Simulations</description>
 
     <requirements>
-      <container type="docker">nttaudom/moose-heating:08.10.24</container>
+      <container type="docker">idaholab/moose:2025.08.14-60f09a2</container>
     </requirements>
 
     <command>
       <![CDATA[
-      cp '$moose_input' 'input.i' &&
-      cp '$mesh_file' 'mesh.msh' &&
-      sed -i 's|file = .*|file = "mesh.msh"|' input.i &&
-      ocelot-opt -i 'input.i' &&
-      cp 'input_out.e' '$moose_output'
+      echo `date +%s` &&
+      if [ -n "$moose_input" ] && [ "$moose_input" != "None" ]; then cp "$moose_input" "input.i"; elif [ "$TP_index" -eq 0 ]; then cp '$__tool_directory__/example_analysis_init.i' "input.i"; else cp "$__tool_directory__/example_analysis_following.i" "input.i"; fi &&
+
+      if [ -n "$mesh_file" ] && [ "$mesh_file" != "None" ]; then cp "$mesh_file" "mesh.e"; else cp "$__tool_directory__/example_mesh_2d.e" "mesh.e"; fi &&
+
+      sed -i 's|file = .*|file = "mesh.e"|' input.i &&
+      sed -i 's|x = .*|x = "'$start_time' '$end_time'"|' input.i &&
+      sed -i 's|y = yl1 yl2|y = "'$left_start' '$left_end'"|' input.i &&
+      sed -i 's|y = ym1 ym2|y = "'$mid_start' '$mid_end'"|' input.i &&
+      sed -i 's|y = yr1 yr2|y = "'$right_start' '$right_end'"|' input.i &&
+      sed -i 's|start_time = .*|start_time = '$start_time'|' input.i &&
+      sed -i 's|end_time = .*|end_time = '$end_time'|' input.i &&
+      sed -i 's|dt = .*|dt = '$time_step_size'|' input.i &&
+      sed -i 's|file_base = TP_index|file_base = "'$TP_index'"|' input.i &&
+
+      if [ "$TP_index" -ne 0 ]; then sed -i 's|restart_file_base = .*|restart_file_base = "'"$__tool_directory__/temp/restart_cp/LATEST"'"|' input.i; fi &&
+      echo `date +%s` &&
+      /opt/moose/bin/moose-opt -i 'input.i' > "$tmap_log" &&
+      echo `date +%s` &&
+      mkdir -p output &&
+      mv *.pvtu output/ &&
+      mv *.vtu output/ &&
+      rm -rf "$__tool_directory__/temp/restart_cp" &&
+      mv restart_cp "$__tool_directory__/temp/" &&
+      echo `date +%s` 
       ]]>
     </command>
 
     <inputs>
-      <param type="data" name="moose_input" label="MOOSE Input File" help="Simulation input parameters. Format: .i"/>
-      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .msh"/>
+      <param type="data" name="moose_input" label="MOOSE Input File" help="Simulation input parameters. Format: .i (optional)" optional="true"/>
+      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .e (optional)" optional="true"/>
+      <param type="float" name="start_time" label="Start Time" help="Start Time (s)" value="0.0" />
+      <param type="float" name="end_time" label="End Time" help="End Time (s)" value="15.0"/>
+      <param type="float" name="time_step_size" label="Time Step Size" help="Time Step Size (s)" value="2.5"/>
+      <param type="float" name="left_start" label="Left Boundary Start Value" help="Left Boundary Start Value (°C)" value="21.0"/>
+      <param type="float" name="left_end" label="Left Boundary End Value" help="Left Boundary End Value (°C)" value="22.0"/>
+      <param type="float" name="mid_start" label="Middle Boundary Start Value" help="Middle Boundary Start Value (°C)" value="21.0"/>
+      <param type="float" name="mid_end" label="Middle Boundary End Value" help="Middle Boundary End Value (°C)" value="22.0"/>
+      <param type="float" name="right_start" label="Right Boundary Start Value" help="Right Boundary Start Value (°C)" value="21.0"/>
+      <param type="float" name="right_end" label="Right Boundary End Value" help="Right Boundary End Value (°C)" value="22.0"/>
+      <param type="integer" name="TP_index" label="VTK File Base Name" help="Base name for VTK output files." value="0"/>
     </inputs>
 
     <outputs>
-      <data format="data" name="moose_output" label="MOOSE Output" help="Simulation output result. Format: .e"/>
+      <data name="tmap_log" format="txt" label="tmap_log" />
+      <collection name="all_outputs" type="list" label="All Output Files">
+        <discover_datasets pattern="__name_and_ext__" directory="output"/>
+      </collection>
     </outputs>
 
   </tool>

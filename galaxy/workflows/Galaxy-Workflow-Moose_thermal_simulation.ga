@@ -1,0 +1,373 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "Moose_thermal_simulation",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "start_time"
+                }
+            ],
+            "label": "start_time",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 0.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "ed90fccc-45d8-4096-8bd0-920daa5ff90b",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "end_time"
+                }
+            ],
+            "label": "end_time",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 2.734375,
+                "top": 74.60939025878906
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 15.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "8cb84518-45f5-464e-ad12-1073b852f5cc",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temp_left_start"
+                }
+            ],
+            "label": "temp_left_start",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 3.713483791207122,
+                "top": 170.7998984938127
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 21.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "9d121d63-dcbf-43ac-8781-b4999c625b1d",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 3,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temp_left_end"
+                }
+            ],
+            "label": "temp_left_end",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 1.6545186099178295,
+                "top": 247.11132254379373
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 22.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "7eec4fb1-8f74-478c-a79a-1be7cc0835f6",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 4,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temp_centre_start"
+                }
+            ],
+            "label": "temp_centre_start",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 2.5155874712520188,
+                "top": 340.1250107444163
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 21.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "a16f81b2-b497-44bb-bfd2-28008d114b02",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 5,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temp_centre_end"
+                }
+            ],
+            "label": "temp_centre_end",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 4.890581576651969,
+                "top": 433.20313667987847
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 22.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "42baa359-8435-4dbd-aa98-01cd1411bbf3",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 6,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temp_right_start"
+                }
+            ],
+            "label": "temp_right_start",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 9.536555253271843,
+                "top": 537.5443482988132
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 21.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "1589f6c7-cbc4-484a-81fb-a21f4269ddc7",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 7,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temp_right_end"
+                }
+            ],
+            "label": "temp_right_end",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 8.676982991011982,
+                "top": 634.94647125034
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 22.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "23bbeae8-aff7-40d2-8919-a7456fecc4d8",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 8,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "index"
+                }
+            ],
+            "label": "index",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 7.787098086980222,
+                "top": 757.804143910914
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"integer\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "7bc8d47c-3718-4183-b430-0f37bd2a3261",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "moose",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "TP_index": {
+                    "id": 8,
+                    "output_name": "output"
+                },
+                "end_time": {
+                    "id": 1,
+                    "output_name": "output"
+                },
+                "left_end": {
+                    "id": 3,
+                    "output_name": "output"
+                },
+                "left_start": {
+                    "id": 2,
+                    "output_name": "output"
+                },
+                "mid_end": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "mid_start": {
+                    "id": 4,
+                    "output_name": "output"
+                },
+                "right_end": {
+                    "id": 7,
+                    "output_name": "output"
+                },
+                "right_start": {
+                    "id": 6,
+                    "output_name": "output"
+                },
+                "start_time": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool MOOSE",
+                    "name": "mesh_file"
+                },
+                {
+                    "description": "runtime parameter for tool MOOSE",
+                    "name": "moose_input"
+                },
+                {
+                    "description": "runtime parameter for tool MOOSE",
+                    "name": "restart_path"
+                }
+            ],
+            "label": null,
+            "name": "MOOSE",
+            "outputs": [
+                {
+                    "name": "all_outputs",
+                    "type": "input"
+                },
+                {
+                    "name": "tmap_log",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 369.6123891562398,
+                "top": 37.857367107983706
+            },
+            "post_job_actions": {},
+            "tool_id": "moose",
+            "tool_state": "{\"TP_index\": {\"__class__\": \"ConnectedValue\"}, \"end_time\": {\"__class__\": \"ConnectedValue\"}, \"left_end\": {\"__class__\": \"ConnectedValue\"}, \"left_start\": {\"__class__\": \"ConnectedValue\"}, \"mesh_file\": {\"__class__\": \"RuntimeValue\"}, \"mid_end\": {\"__class__\": \"ConnectedValue\"}, \"mid_start\": {\"__class__\": \"ConnectedValue\"}, \"moose_input\": {\"__class__\": \"RuntimeValue\"}, \"restart_path\": {\"__class__\": \"RuntimeValue\"}, \"right_end\": {\"__class__\": \"ConnectedValue\"}, \"right_start\": {\"__class__\": \"ConnectedValue\"}, \"start_time\": {\"__class__\": \"ConnectedValue\"}, \"time_step_size\": \"2.5\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "30e51fd7-b036-4f71-8252-5ca6428cb241",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "10": {
+            "annotation": "",
+            "content_id": "moose_postprocess",
+            "errors": null,
+            "id": 10,
+            "input_connections": {
+                "all_outputs": {
+                    "id": 9,
+                    "output_name": "all_outputs"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Moose Postprocessing",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "csv"
+                }
+            ],
+            "position": {
+                "left": 617.2000356406148,
+                "top": 267.4000907758922
+            },
+            "post_job_actions": {},
+            "tool_id": "moose_postprocess",
+            "tool_state": "{\"all_outputs\": {\"__class__\": \"ConnectedValue\"}, \"interval_time\": \"2.5\", \"simulation_time\": \"15.0\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "2071ba4e-83c8-4a83-8b2f-76d0b5cf9f18",
+            "when": null,
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "9b71cb08-4146-4078-8679-0d0536068d85",
+    "version": 1
+}
