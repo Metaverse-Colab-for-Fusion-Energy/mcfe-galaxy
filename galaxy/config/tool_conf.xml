@@ -125,10 +125,13 @@
     <tool file="tokamak_gen/tokamak_gen.xml" />
   </section>
   <section id="LIBRTI_Tools" name="LIBRTI Tools">
-    <tool file="moose/moose.xml" />
-    <tool file="tmap8/tmap8.xml" />
-    <tool file="tmap_postprocess/tmap_postprocess.xml" />
-    <tool file="create_sample_msh/create_sample_msh.xml" />
+    <tool file="Galaxy-Tools/moose/moose.xml" />
+    <tool file="Galaxy-Tools/tmap8/tmap8.xml" />
+    <tool file="Galaxy-Tools/moose_postprocess/moose_postprocess.xml" />
+    <tool file="Galaxy-Tools/tmap_postprocess/tmap_postprocess.xml" />
+    <tool file="Galaxy-Tools/create_sample_msh/create_sample_msh.xml" />
+    <tool file="Galaxy-Tools/tmap_extract_flow/tmap_extract_flow.xml" />
+    <tool file="Galaxy-Tools/upload_file_to_nucleus/upload_file_to_nucleus.xml" />
   </section>
   <section id="Test" name="Test Tools">
     <tool file="test.xml" />
