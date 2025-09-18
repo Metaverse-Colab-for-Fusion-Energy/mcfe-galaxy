@@ -8,7 +8,6 @@
 
     <command>
       <![CDATA[
-      echo `date +%s` &&
       if [ -n "$moose_input" ] && [ "$moose_input" != "None" ]; then cp "$moose_input" "input.i"; elif [ "$TP_index" -eq 0 ]; then cp '$__tool_directory__/example_analysis_init.i' "input.i"; else cp "$__tool_directory__/example_analysis_following.i" "input.i"; fi &&
 
       if [ -n "$mesh_file" ] && [ "$mesh_file" != "None" ]; then cp "$mesh_file" "mesh.e"; else cp "$__tool_directory__/example_mesh_2d.e" "mesh.e"; fi &&
@@ -24,15 +23,13 @@
       sed -i 's|file_base = TP_index|file_base = "'$TP_index'"|' input.i &&
 
       if [ "$TP_index" -ne 0 ]; then sed -i 's|restart_file_base = .*|restart_file_base = "'"$__tool_directory__/temp/restart_cp/LATEST"'"|' input.i; fi &&
-      echo `date +%s` &&
-      /opt/moose/bin/moose-opt -i 'input.i' > "$tmap_log" &&
-      echo `date +%s` &&
+      /opt/moose/bin/moose-opt -i 'input.i' &&
+      echo '{"status":"moose_finished"}' > "$tmap_log" &&
       mkdir -p output &&
       mv *.pvtu output/ &&
       mv *.vtu output/ &&
       rm -rf "$__tool_directory__/temp/restart_cp" &&
-      mv restart_cp "$__tool_directory__/temp/" &&
-      echo `date +%s` 
+      mv restart_cp "$__tool_directory__/temp/" 
       ]]>
     </command>
 
@@ -52,7 +49,7 @@
     </inputs>
 
     <outputs>
-      <data name="tmap_log" format="txt" label="tmap_log" />
+      <data name="tmap_log" format="json" label="tmap_log" />
       <collection name="all_outputs" type="list" label="All Output Files">
         <discover_datasets pattern="__name_and_ext__" directory="output"/>
       </collection>
