@@ -24,7 +24,7 @@
 
       if [ "$TP_index" -ne 0 ]; then sed -i 's|restart_file_base = .*|restart_file_base = "'"$__tool_directory__/temp/restart_cp/LATEST"'"|' input.i; fi &&
       /opt/moose/bin/moose-opt -i 'input.i' &&
-      echo '{"status":"moose_finished"}' > "$tmap_log" &&
+      echo "{\"uid\":\"$output_log.creating_job.history.name\",\"status\":\"moose_finished\"}" > "$tmap_log" &&
       mkdir -p output &&
       mv *.pvtu output/ &&
       mv *.vtu output/ &&
