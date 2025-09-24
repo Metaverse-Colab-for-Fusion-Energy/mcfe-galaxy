@@ -38,17 +38,17 @@
 [Kernels]
   [heat_conduction]
     type = ADDiffusion
-    variable = T
+    variable = temperature
   []
 
   [transient_term]
     type = ADHeatConductionTimeDerivative
-    variable = T
+    variable = temperature
   []
 []
 
 [Variables]
-  [T]
+  [temperature]
     order = FIRST
     family = LAGRANGE
 
@@ -68,13 +68,13 @@
   [./middle_temp_bc]
     type = FunctionDirichletBC
     boundary = 'outer'                   
-    variable = T                   
+    variable = temperature                   
     function = temp_profile             
   [../]
 
   [./side_outer_conv_bc]
     type = ConvectiveFluxFunction
-    variable = T
+    variable = temperature
     boundary = 'outer_side'
     coefficient = 20
     T_infinity = 20
@@ -82,7 +82,7 @@
 
   [./side_outer_rad_bc]
     type = FunctionRadiativeBC
-    variable = T
+    variable = temperature
     boundary = 'outer_side'
     emissivity_function = 0.3
     Tinfinity = 20
@@ -93,7 +93,7 @@
 [ThermalContact]
   [left_gap_contact]
     type = GapHeatTransfer
-    variable = T
+    variable = temperature
     primary = 'left_top'
     secondary = 'left_bottom'
     gap_conductance = 200
@@ -103,7 +103,7 @@
   []
   [right_gap_contact]
     type = GapHeatTransfer
-    variable = T
+    variable = temperature
     primary = 'right_top'
     secondary = 'right_bottom'
     gap_conductance = 200
