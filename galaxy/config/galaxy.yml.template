@@ -2,16 +2,17 @@ gravity:
   gunicorn:
     bind: 0.0.0.0:8080
     workers: 2
-    extra_args: '--forwarded-allow-ips="*"'
+    extra_ars: '--forwarded-allow-ips="*"'
     preload: true
   celery:
     concurrency: 2
     loglevel: WARNING
   tusd:
     enable: true
+    host: 0.0.0.0
+    port: 1080
     tusd_path: /usr/local/sbin/tusd
     upload_dir: /galaxy/server/data/tus/
-    extra_args: '-verbose'
   # handlers:
   #   handler:
   #     processes: 2
@@ -27,14 +28,11 @@ gravity:
 
 galaxy:
   # Main config
-  admin_users: admin@example.org
+  admin_users:
+   - admin@example.org
   bootstrap_admin_api_key: '$GALAXY_API_KEY'
   id_secret: 'morestufftoreplace'
   log_level: WARNING
-
-  # Use remote users
-  use_remote_user: true
-  remote_user_maildomain: example.org
 
   # Watch file changes 
   watch_tools: 'true'
@@ -63,7 +61,7 @@ galaxy:
   new_user_dataset_access_role_default_private: true
 
   # TUS
-  galaxy_infrastructure_url: "$GALAXY_URL"
+  galaxy_infrastructure_url: "http://localhost:8080"
   tus_upload_store: /galaxy/server/data/tus/
 
   # SQL Performance
@@ -77,6 +75,7 @@ galaxy:
   retry_job_output_collection: 3
 
   # Debugging
+  cleanup_job: onsuccess
   allow_user_impersonation: true
 
   # Object Store
@@ -102,6 +101,7 @@ galaxy:
   file_sources_config_file: /galaxy/server/config/file_sources_conf.yml
 
   # File paths
+  auth_config_file: /galaxy/server/config/auth_conf.xml
   builds_file_path: /galaxy/server/tool-data/shared/ucsc/builds.txt.sample
   container_resolvers_config_file: ''
   data_manager_config_file: /galaxy/server/config/data_manager_conf.xml.sample
