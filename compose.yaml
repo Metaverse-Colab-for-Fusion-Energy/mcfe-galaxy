@@ -26,10 +26,11 @@ services:
         USER root
         RUN apt update && apt -y install docker.io
         USER galaxy
-        COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+        COPY --from=ghcr.io/astral-sh/uv:0.8.15 /uv /uvx /bin/
         ENV HOME=/tmp
         ENV UV_CACHE=/tmp/uv_cache
-        RUN uv add boto3
+        RUN sed -i '/wheels.galaxyproject.org/d' pyproject.toml
+        RUN uv add boto3 --index https://pypi.org/simple
     restart: unless-stopped
     group_add:
       - ${DOCKER_GID}
@@ -87,12 +88,13 @@ services:
     build:
       context: .
       dockerfile_inline: |
-        FROM alpine:3.22
-        RUN apk update && apk add gettext bash
+        FROM ubuntu:22.04
+        RUN apt update && apt install -y gettext
         COPY ./galaxy/init/template.sh /template.sh
     container_name: ${PROJECT_NAME}-galaxy-template-eval
     env_file: .env
-    working_dir: ./
+    environment:
+      REPO_PATH: ${PWD}
     volumes:
       - ./galaxy/config/:/work
       - galaxy-store:/galaxy/server/
@@ -148,7 +150,6 @@ services:
       minio:
         condition: service_healthy
     volumes:
-      - ./minio/init/bootstrap.sh:/bootstrap.sh
       - ./minio/data:/data:ro      
     networks:
       - galaxy

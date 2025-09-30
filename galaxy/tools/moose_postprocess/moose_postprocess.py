@@ -7,7 +7,7 @@ import os
 import shutil
 
 parser = argparse.ArgumentParser(
-    description="Postprocess TMAP8 simulation data for visualization in Omniverse."
+    description="Postprocess Moose simulation data for visualization in Omniverse."
 )
 
 parser.add_argument(
@@ -25,15 +25,13 @@ parser.add_argument(
 parser.add_argument(
     "--simulation_outputs",
     required=True,
-    help="List of input files. These should be the output files from TMAP8 simulation."
+    help="List of input files. These should be the output files from Moose simulation."
 )
 
 args = parser.parse_args()
-
 extracted_outputs = []
 with tempfile.TemporaryDirectory() as tmpdir:
     copied_files = []
-    print(args.simulation_outputs)
     with open(args.simulation_outputs) as f:
         all_outputs = [line.strip() for line in f if line.strip()]
 
@@ -54,15 +52,15 @@ with tempfile.TemporaryDirectory() as tmpdir:
 
         gc.collect()
 
-        if 'mobile' not in mesh.point_data:
-            print(f"Warning: 'mobile' not found in {original_name}.{ext}")
+        if 'temperature' not in mesh.point_data:
+            print(f"Warning: 'temperature' not found in {original_name}.{ext}")
             continue
-
-        temperature = mesh.point_data['mobile']
+      
+        temperature = mesh.point_data['temperature']
         extracted_outputs.append((original_name, temperature))
 
 with open('output.csv', "w", newline="") as f:
-    f.write("filename,mobile_values\n")
+    f.write("filename,temperature\n")
     for original_name, temperature in extracted_outputs:
-        temps_str = " ".join(map(str, temperature))
-        f.write(f"{original_name},{temps_str}\n")
+        for t in temperature:
+            f.write(f"{original_name},{t}\n")

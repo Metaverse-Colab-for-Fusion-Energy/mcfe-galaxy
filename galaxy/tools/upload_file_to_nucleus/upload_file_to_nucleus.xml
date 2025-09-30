@@ -1,0 +1,32 @@
+<tool id="upload_file_to_nucleus" name="File upload to nucleus" version="0.1.0">
+
+  <description>File upload to Nucleus</description>
+
+  <requirements>
+    <container type="docker">omniverse-python:latest</container>
+  </requirements>
+  <command>
+    <![CDATA[
+      export HOME=/tmp && 
+      python3 '$__tool_directory__/upload_file_to_nucleus.py' --file '$file' --nucleus_path '$nucleus_path' --nucleus_user '$nucleus_user' --nucleus_pass '$nucleus_pass' --uuid '$output_log.creating_job.history.name' --ext '${file.ext}' > '$output_log' &&
+      echo "{\"uid\":\"$output_log.creating_job.history.name\",\"status\":\"file_upload_finished\"}" > "$tmap_log"
+    ]]>
+  </command>
+
+  <inputs>
+    <param name="file" type="data" label="Input File" optional="false"
+      help="Input file to be uploaded to Nucleus." />
+    <param name="nucleus_path" type="text" label="Nucleus Path" optional="false"
+      help="The Nucleus path where the file will be uploaded." value="omniverse://mcfe-nucleus.soe.manchester.ac.uk/Projects/LIBRTI/randall/" />
+    <param name="nucleus_user" type="text" label="Nucleus Username" optional="false"
+      help="The username for Nucleus authentication." />
+    <param name="nucleus_pass" type="text" label="Nucleus Password" optional="false"
+      help="The password for Nucleus authentication." />
+  </inputs>
+
+  <outputs>
+    <data name="output_log" format="txt" label="Upload Log"/>
+    <data name="tmap_log" format="json" label="tmap_log" />
+  </outputs>
+
+</tool>

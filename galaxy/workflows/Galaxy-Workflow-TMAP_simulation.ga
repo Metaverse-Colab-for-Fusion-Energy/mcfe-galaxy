@@ -1,0 +1,415 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "",
+    "comments": [],
+    "format-version": "0.1",
+    "name": "TMAP_simulation",
+    "report": {
+        "markdown": "\n# Workflow Execution Report\n\n## Workflow Inputs\n```galaxy\ninvocation_inputs()\n```\n\n## Workflow Outputs\n```galaxy\ninvocation_outputs()\n```\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n"
+    },
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "solubility"
+                }
+            ],
+            "label": "solubility",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 24,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 0.04, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "69509d9e-a3bb-4628-9714-a870143de98f",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "diffusivity"
+                }
+            ],
+            "label": "diffusivity",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 17,
+                "top": 141.54685974121094
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 1.5e-09, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "b1bc1454-14dc-44c8-b176-5e310d46810d",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "temperature"
+                }
+            ],
+            "label": "temperature",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 13,
+                "top": 240.53123474121094
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 773.15, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "bdfed1a9-a113-43de-a904-67614db57d7c",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 3,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "chamber_volume"
+                }
+            ],
+            "label": "chamber_volume",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 6,
+                "top": 313.54685974121094
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 3.278e-05, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "960ab91f-10ff-4a28-8e87-316ac5a85a21",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 4,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "inlet_pressure"
+                }
+            ],
+            "label": "inlet_pressure",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 11.46875,
+                "top": 420.99998474121094
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 42000.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "bc84a7ad-3800-49f9-9559-c853fed3a019",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 5,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "simulation_time"
+                }
+            ],
+            "label": "simulation_time",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 8.59375,
+                "top": 501.12498474121094
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 10.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "4306d790-f64f-4e1e-85ef-76bd525e6b95",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 6,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "interval_time"
+                }
+            ],
+            "label": "interval_time",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 15.984375,
+                "top": 640.5624847412109
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 1.0, \"validators\": [{\"min\": null, \"max\": null, \"negate\": false, \"type\": \"in_range\"}], \"parameter_type\": \"float\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "868f89db-7dea-4d53-9b30-54ff55debccf",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 7,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "nucleus_user"
+                }
+            ],
+            "label": "nucleus_user",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 44,
+                "top": 729.5
+            },
+            "tool_id": null,
+            "tool_state": "{\"multiple\": false, \"validators\": [], \"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "71f0754d-3ded-4413-b4c0-8affaa4ce29c",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 8,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "nucleus_pass"
+                }
+            ],
+            "label": "nucleus_pass",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 815.5
+            },
+            "tool_id": null,
+            "tool_state": "{\"multiple\": false, \"validators\": [], \"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "b37e051b-5c2b-44c6-b700-0ba1d9ce1bb2",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "tmap8",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "V_chamber": {
+                    "id": 3,
+                    "output_name": "output"
+                },
+                "diffusivity": {
+                    "id": 1,
+                    "output_name": "output"
+                },
+                "interval_time": {
+                    "id": 6,
+                    "output_name": "output"
+                },
+                "pressure_inlet": {
+                    "id": 4,
+                    "output_name": "output"
+                },
+                "simulation_time": {
+                    "id": 5,
+                    "output_name": "output"
+                },
+                "solubility": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "temperature": {
+                    "id": 2,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool TMAP8",
+                    "name": "mesh_file"
+                },
+                {
+                    "description": "runtime parameter for tool TMAP8",
+                    "name": "tamp_input"
+                }
+            ],
+            "label": null,
+            "name": "TMAP8",
+            "outputs": [
+                {
+                    "name": "all_outputs",
+                    "type": "input"
+                },
+                {
+                    "name": "tmap_log",
+                    "type": "txt"
+                },
+                {
+                    "name": "csv_output",
+                    "type": "csv"
+                }
+            ],
+            "position": {
+                "left": 309,
+                "top": 152.54687585448818
+            },
+            "post_job_actions": {},
+            "tool_id": "tmap8",
+            "tool_state": "{\"V_chamber\": {\"__class__\": \"ConnectedValue\"}, \"diffusivity\": {\"__class__\": \"ConnectedValue\"}, \"interval_time\": {\"__class__\": \"ConnectedValue\"}, \"mesh_file\": {\"__class__\": \"RuntimeValue\"}, \"pressure_inlet\": {\"__class__\": \"ConnectedValue\"}, \"simulation_time\": {\"__class__\": \"ConnectedValue\"}, \"solubility\": {\"__class__\": \"ConnectedValue\"}, \"tamp_input\": {\"__class__\": \"RuntimeValue\"}, \"temperature\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "9eaa00b8-2244-4ec0-85dc-44b665623040",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "10": {
+            "annotation": "",
+            "content_id": "tmap_postprocess",
+            "errors": null,
+            "id": 10,
+            "input_connections": {
+                "all_outputs": {
+                    "id": 9,
+                    "output_name": "all_outputs"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "TMAP8 Postprocessing",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "csv"
+                }
+            ],
+            "position": {
+                "left": 600,
+                "top": 187.54687585448818
+            },
+            "post_job_actions": {},
+            "tool_id": "tmap_postprocess",
+            "tool_state": "{\"all_outputs\": {\"__class__\": \"ConnectedValue\"}, \"interval_time\": \"5.0\", \"simulation_time\": \"10.0\", \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "f35b4953-a74d-4ab2-ab83-aa496f6fae13",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "11": {
+            "annotation": "",
+            "content_id": "upload_file_to_nucleus",
+            "errors": null,
+            "id": 11,
+            "input_connections": {
+                "file": {
+                    "id": 10,
+                    "output_name": "output"
+                },
+                "nucleus_pass": {
+                    "id": 8,
+                    "output_name": "output"
+                },
+                "nucleus_user": {
+                    "id": 7,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool File upload to nucleus",
+                    "name": "file"
+                }
+            ],
+            "label": null,
+            "name": "File upload to nucleus",
+            "outputs": [
+                {
+                    "name": "output_log",
+                    "type": "txt"
+                },
+                {
+                    "name": "tmap_log",
+                    "type": "json"
+                }
+            ],
+            "position": {
+                "left": 904,
+                "top": 220.5
+            },
+            "post_job_actions": {},
+            "tool_id": "upload_file_to_nucleus",
+            "tool_state": "{\"file\": {\"__class__\": \"RuntimeValue\"}, \"nucleus_pass\": {\"__class__\": \"ConnectedValue\"}, \"nucleus_path\": \"omniverse://mcfe-nucleus.soe.manchester.ac.uk/Projects/LIBRTI/randall/\", \"nucleus_user\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": 0, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.0",
+            "type": "tool",
+            "uuid": "03510d7f-f320-47c9-9f5b-bc2f0cdd08a4",
+            "when": null,
+            "workflow_outputs": []
+        }
+    },
+    "tags": [],
+    "uuid": "fd87ca82-36c8-478f-a439-2b647fd6453b",
+    "version": 1
+}

@@ -1,0 +1,33 @@
+<tool id="tmap_extract_flow" name="TMAP8 Extract Flow" version="0.1.0">
+
+  <description>Calculate outlet flow rate from TMAP CSV Output.</description>
+
+  <requirements>
+    <container type="docker">ghcr.io/metaverse-colab-for-fusion-energy/vtk-to-obj:311024</container>
+  </requirements>
+
+  <command>
+    <![CDATA[
+      python3 $__tool_directory__/tmap_extract_flow.py --input '$tmap_csv' --num_points '$num_points' --gradient_out '$output_flow' --r2_out '$output_r2' 
+    ]]>
+  </command>
+
+  <inputs>
+    <param type="data" name="tmap_csv" label="TMAP8 CSV"/>
+    <param type="integer" name="num_points" label="Number of Points" help="Number of Points to use for linear regression" value="5"/>
+  </inputs>
+
+  <outputs>
+    <data type="float" name="output_flow" label="Output Flow"/>
+    <data type="float" name="output_r2" label="Output R²"/>
+  </outputs>
+
+  <help>
+    This tool extracts the flow rate from TMAP8 simulation outputs, specifically focusing on the outlet flow rate. The output is formatted for further analysis or visualization.
+    The tool processes the specified simulation and interval times to calculate the flow rate.
+  </help>
+
+  <citations>
+
+  </citations>
+</tool>

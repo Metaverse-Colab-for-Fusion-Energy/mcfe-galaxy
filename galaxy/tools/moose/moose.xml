@@ -3,26 +3,54 @@
     <description>MOOSE Thermal Heating Simulations</description>
 
     <requirements>
-      <container type="docker">nttaudom/moose-heating:08.10.24</container>
+      <container type="docker">idaholab/moose:2025.08.14-60f09a2</container>
     </requirements>
 
     <command>
       <![CDATA[
-      cp '$moose_input' 'input.i' &&
-      cp '$mesh_file' 'mesh.msh' &&
-      sed -i 's|file = .*|file = "mesh.msh"|' input.i &&
-      ocelot-opt -i 'input.i' &&
-      cp 'input_out.e' '$moose_output'
+      if [ -n "$moose_input" ] && [ "$moose_input" != "None" ]; then cp "$moose_input" "input.i"; elif [ "$TP_index" -eq 0 ]; then cp '$__tool_directory__/example_analysis_init.i' "input.i"; else cp "$__tool_directory__/example_analysis_following.i" "input.i"; fi &&
+
+      if [ -n "$mesh_file" ] && [ "$mesh_file" != "None" ]; then cp "$mesh_file" "mesh.e"; else cp "$__tool_directory__/example_mesh_2d.e" "mesh.e"; fi &&
+
+      sed -i 's|file = .*|file = "mesh.e"|' input.i &&
+      sed -i 's|x = .*|x = \"$time_range\"|' input.i &&
+      sed -i 's|y = yl1 yl2|y = \"$temperature_output_left\"|' input.i &&
+      sed -i 's|y = ym1 ym2|y = \"$temperature_output_main\"|' input.i &&
+      sed -i 's|y = yr1 yr2|y = \"$temperature_output_right\"|' input.i &&
+      sed -i 's|start_time = .*|start_time = '$start_time'|' input.i &&
+      sed -i 's|end_time = .*|end_time = '$end_time'|' input.i &&
+      sed -i 's|dt = .*|dt = '$time_step_size'|' input.i &&
+      sed -i 's|file_base = TP_index|file_base = "'$TP_index'"|' input.i &&
+
+      if [ "$TP_index" -ne 0 ]; then sed -i 's|restart_file_base = .*|restart_file_base = "'"$__tool_directory__/temp/restart_cp/LATEST"'"|' input.i; fi &&
+      /opt/moose/bin/moose-opt -i 'input.i' &&
+      echo "{\"uid\":\"$tmap_log.creating_job.history.name\",\"status\":\"moose_finished\"}" > "$tmap_log" &&
+      mkdir -p output &&
+      mv *.pvtu output/ &&
+      mv *.vtu output/ &&
+      rm -rf "$__tool_directory__/temp/restart_cp" &&
+      mv restart_cp "$__tool_directory__/temp/"
       ]]>
     </command>
 
     <inputs>
-      <param type="data" name="moose_input" label="MOOSE Input File" help="Simulation input parameters. Format: .i"/>
-      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .msh"/>
+      <param type="data" name="moose_input" label="MOOSE Input File" help="Simulation input parameters. Format: .i (optional)" optional="true"/>
+      <param type="data" name="mesh_file" label="Mesh" help="Mesh of geometry to be simulated. Format: .e (optional)" optional="true"/>
+      <param type="text" name="time_range" label="Time Range" value="0 15 30"/>
+      <param type="float" name="time_step_size" label="Time Step Size" help="Time Step Size (s)" value="2.5"/>
+      <param type="text" name="temperature_output_left" label="Left Boundary Temperature" help="" value="21.0 21.1 21.0"/>
+      <param type="text" name="temperature_output_main" label="Main Domain Temperature" help="" value="20.4 20.5 20.4"/>
+      <param type="text" name="temperature_output_right" label="Right Boundary Temperature" help="" value="20.0 20.1 20.0"/>
+      <param type="integer" name="TP_index" label="VTK File Base Name" help="Base name for VTK output files." value="0"/>
+      <param type="float" name="start_time" label="Start Time" help="Start Time (s)" value="0.0" />
+      <param type="float" name="end_time" label="End Time" help="End Time (s)" value="30.0"/>
     </inputs>
 
     <outputs>
-      <data format="data" name="moose_output" label="MOOSE Output" help="Simulation output result. Format: .e"/>
+      <data name="tmap_log" format="json" label="tmap_log" />
+      <collection name="all_outputs" type="list" label="All Output Files">
+        <discover_datasets pattern="__name_and_ext__" directory="output"/>
+      </collection>
     </outputs>
 
   </tool>
