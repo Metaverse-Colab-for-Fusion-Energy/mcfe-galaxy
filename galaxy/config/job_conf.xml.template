@@ -21,10 +21,15 @@
     <destination id="docker_root" runner="local">
       <param id="docker_enabled">true</param>
       <param id="docker_volumes">galaxy-store:/galaxy/server</param>
-      <param id="docker_sudo">true</param>
+      <param id="docker_sudo">false</param>
+      <param id="docker_set_user">0</param>
       <param id="docker_auto_rm">true</param> 
+      <param id="docker_run_extra_arguments">--entrypoint '' --env PATH=/opt/openmpi/bin:/opt/rh/gcc-toolset-12/root/usr/bin:$PATH </param>
+
     </destination>
   </destinations>
   <tools>
+   <tool id="tmap8" destination="docker_root" />
+   <tool id="moose" destination="docker_root" />
   </tools>
 </job_conf>
