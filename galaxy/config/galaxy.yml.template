@@ -8,7 +8,7 @@ gravity:
     concurrency: 2
     loglevel: WARNING
   tusd:
-    enable: true
+    enable: false
     tusd_path: /usr/local/sbin/tusd
     upload_dir: /galaxy/server/data/tus/
     extra_args: '-verbose'
