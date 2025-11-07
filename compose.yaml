@@ -13,8 +13,6 @@ services:
       - galaxy-store:/galaxy/server/
       - ./nginx/galaxy.conf:/etc/nginx/conf.d/default.conf:ro
       - ./galaxy/config/welcome.html:/galaxy/server/static/welcome.html
-    ports:
-      - "80:80"
     networks:
       - galaxy
     
@@ -165,6 +163,8 @@ services:
       
 networks:
   galaxy:
+    external: true
+    name: apperture_apperture
 
 volumes:
   galaxy-store:
